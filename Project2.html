@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            background-color: #b1c8d3;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .page {
+            position: relative;
+            width: 60%;
+            height: 5500px;
+            background-size: cover;
+            background-position: center;
+            background-color: #ffffff;
+            border: 2px solid #a1a089;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            line-height: 1.5; /* Increase line height for larger breaks */
+        }
+
+        .header {
+            position: absolute;
+            top: 1.8%;
+            left: 36%;
+            font-size: 45px;
+            color: #000000;
+        }
+
+        .parbox1 {
+            width: 90%;
+            height: 3%;
+            top: 3.5%;
+            left: 5%;
+            background-color: #fff;
+            position: absolute;
+            z-index: 2;
+            font-size: 15px;
+            color: #000000;
+            text-align: justify;
+        }
+
+        .sub-header1 {
+            position: absolute;
+            top: 7.3%;
+            left: 5%;
+            font-size: 26px;
+            color: #000000;
+        }
+
+        .parbox2 {
+            width: 90%;
+            height: 5%;
+            top: 8.3%;
+            left: 5%;
+            background-color: #fff;
+            position: absolute;
+            z-index: 2;
+            font-size: 15px;
+            color: #000000;
+            text-align: justify;
+        }
+
+        .parbox3 {
+            width: 40%;
+            height: 2%;
+            top: 10.1%;
+            left: 5%;
+            background-color: #fff;
+            position: absolute;
+            z-index: 2;
+            font-size: 15px;
+            color: #000000;
+            text-align: justify;
+        }
+
+        .foto1 {
+            width: 52%;
+            height: 6%;
+            top: 8.8%;
+            right: 1%;
+            background-image: url('1.jpg');
+            background-size: 90%;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            z-index: 2;
+        }
+
+        .foto2 {
+            width: 64%;
+            height: 6%;
+            top: 15.2%;
+            left: 1%;
+            background-image: url('2.jpg');
+            background-size: 95%;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            z-index: 2;
+        }
+
+        .foto3 {
+            width: 64%;
+            height: 7%;
+            top: 18.6%;
+            left: 0%;
+            background-image: url('3.jpg');
+            background-size: 99%;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            z-index: 2;
+        }
+        .parbox4 {
+            width: 30%;
+            height: 8%;
+            top: 14.5%;
+            right: 4%;
+            background-color: #fff;
+            position: absolute;
+            z-index: 2;
+            font-size: 15px;
+            color: #000000;
+            text-align: justify;
+        }
+        .parbox5 {
+            width: 40%;
+            height: 2%;
+            top: 26%;
+            left: 5%;
+            background-color: #fff;
+            position: absolute;
+            z-index: 2;
+            font-size: 15px;
+            color: #000000;
+            text-align: justify;
+        }
+        .black-rectangle1 {
+            position: absolute;
+            top: 190%; /* Fix the upper edge */
+            right: 22%;
+            width: 29%;
+            height: 10%;
+            background-color: #b1c8d3; /* Change filling to light blue */
+            border: 2px solid black; /* Add black border */
+            z-index: 10; /* Ensure it is on the very top */
+            cursor: pointer;
+            overflow: hidden; /* Hide overflowed text */
+            transition: height 0.3s; /* Add a smooth transition effect */
+        }
+        .parbox6 {
+            width: 30%;
+            height: 2%;
+            top: 29.5%;
+            left: 5%;
+            background-color: #fff;
+            position: absolute;
+            z-index: 2;
+            font-size: 15px;
+            color: #000000;
+            text-align: justify;
+        }
+        .foto4 {
+            width: 62%;
+            height: 6%;
+            top: 30.4%;
+            right: 2%;
+            background-image: url('4.png');
+            background-size: 99%;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            z-index: 2;
+        }
+        .parbox7 {
+            width: 90%;
+            height: 5%;
+            top: 37.8%;
+            left: 5%;
+            background-color: #fff;
+            position: absolute;
+            z-index: 2;
+            font-size: 15px;
+            color: #000000;
+            text-align: justify;
+        }
+        .foto5 {
+            width: 62%;
+            height: 6%;
+            top: 39%;
+            right: 20%;
+            background-image: url('5.png');
+            background-size: 99%;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            z-index: 2;
+        }
+        .sub-header2 {
+            position: absolute;
+            top: 44.2%;
+            left: 5%;
+            font-size: 26px;
+            color: #000000;
+        }
+        .parbox8 {
+            width: 90%;
+            height: 1%;
+            top: 45.2%;
+            left: 5%;
+            background-color: #fff;
+            position: absolute;
+            z-index: 2;
+            font-size: 15px;
+            color: #000000;
+            text-align: justify;
+        }
+        .sub-header3 {
+            position: absolute;
+            top: 47.2%;
+            left: 5%;
+            font-size: 26px;
+            color: #000000;
+        }
+        .parbox9 {
+            width: 90%;
+            height: 1%;
+            top: 48.2%;
+            left: 5%;
+            background-color: #fff;
+            position: absolute;
+            z-index: 2;
+            font-size: 15px;
+            color: #000000;
+            text-align: justify;
+        }
+        .foto6 {
+            width: 30%;
+            height: 6%;
+            top: 49.9%;
+            left: 3%;
+            background-image: url('6.png');
+            background-size: 99%;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            z-index: 2;
+        }
+        .foto7 {
+            width: 30%;
+            height: 7%;
+            top: 49.5%;
+            right: 3%;
+            background-image: url('7.png');
+            background-size: 99%;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            z-index: 2;
+        }
+        .parbox10 {
+            width: 30%;
+            height: 1%;
+            top: 50.2%;
+            left: 35%;
+            background-color: #fff;
+            position: absolute;
+            z-index: 2;
+            font-size: 15px;
+            color: #000000;
+            text-align: justify;
+        }
+        .parbox11 {
+            width: 40%;
+            height: 1%;
+            top: 56.5%;
+            left: 5%;
+            background-color: #fff;
+            position: absolute;
+            z-index: 2;
+            font-size: 15px;
+            color: #000000;
+            text-align: justify;
+        }
+        .foto8 {
+            width: 45%;
+            height: 6%;
+            top: 57%;
+            right: 3%;
+            background-image: url('8.png');
+            background-size: 99%;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            z-index: 2;
+        }
+        .foto9 {
+            width: 60%;
+            height: 6%;
+            top: 64%;
+            left: 1%;
+            background-image: url('9.png');
+            background-size: 95%;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            z-index: 2;
+        }
+        .parbox12 {
+            width: 32%;
+            height: 1%;
+            top: 64.1%;
+            right: 5%;
+            background-color: #fff;
+            position: absolute;
+            z-index: 2;
+            font-size: 15px;
+            color: #000000;
+            text-align: justify;
+        }
+        .black-rectangle2 {
+            position: absolute;
+            top: 515%; /* Fix the upper edge */
+            right: 22%;
+            width: 28%;
+            height: 10%;
+            background-color: #b1c8d3; /* Change filling to light blue */
+            border: 2px solid black; /* Add black border */
+            z-index: 9; /* Ensure it is on the very top */
+            cursor: pointer;
+            overflow: hidden; /* Hide overflowed text */
+            transition: height 0.3s; /* Add a smooth transition effect */
+        }
+        .foto10 {
+            width: 48%;
+            height: 6%;
+            top: 69%;
+            left: 1%;
+            background-image: url('10.png');
+            background-size: 95%;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            z-index: 2;
+        }
+        .parbox13 {
+            width: 90%;
+            height: 1%;
+            top: 75.3%;
+            left: 5%;
+            background-color: #fff;
+            position: absolute;
+            z-index: 2;
+            font-size: 15px;
+            color: #000000;
+            text-align: justify;
+        }
+        .sub-header4 {
+            position: absolute;
+            top: 76.6%;
+            left: 5%;
+            font-size: 26px;
+            color: #000000;
+        }
+        .foto11 {
+            width: 90%;
+            height: 20%;
+            top: 71.5%;
+            right: 5%;
+            background-image: url('11.png');
+            background-size: 95%;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            z-index: 2;
+        }
+        .sub-header5 {
+            position: absolute;
+            top: 86.4%;
+            left: 5%;
+            font-size: 26px;
+            color: #000000;
+        }
+        .parbox14 {
+            width: 90%;
+            height: 1%;
+            top: 87.5%;
+            left: 5%;
+            background-color: #fff;
+            position: absolute;
+            z-index: 2;
+            font-size: 15px;
+            color: #000000;
+            text-align: justify;
+        }
+        .parbox15 {
+            width: 90%;
+            height: 1%;
+            top: 90%;
+            left: 5%;
+            background-color: #fff;
+            position: absolute;
+            z-index: 2;
+            font-size: 15px;
+            color: #000000;
+            text-align: justify;
+        }
+        .black-rectangle3 {
+            position: absolute;
+            top: 605%; /* Fix the upper edge */
+            right: 22%;
+            width: 28%;
+            height: 10%;
+            background-color: #b1c8d3; /* Change filling to light blue */
+            border: 2px solid black; /* Add black border */
+            z-index: 8; /* Ensure it is on the very top */
+            cursor: pointer;
+            overflow: hidden; /* Hide overflowed text */
+            transition: height 0.3s; /* Add a smooth transition effect */
+        }
+        .sub-header6 {
+            position: absolute;
+            top: 93.8%;
+            left: 5%;
+            font-size: 26px;
+            color: #000000;
+        }
+        .parbox16 {
+            width: 90%;
+            height: 1%;
+            top: 95%;
+            left: 5%;
+            background-color: #fff;
+            position: absolute;
+            z-index: 2;
+            font-size: 15px;
+            color: #000000;
+            text-align: justify;
+        }
+        .full-python-rectangle {
+            position: absolute;
+            top: 692%; /* Adjust the position as needed */
+            left: 23%; /* Adjust the position as needed */
+            width: 12%; /* Adjust width */
+            height: 5%; /* Adjust height */
+            background-color: #b1c8d3; /* Yellow filling */
+            border: 2px solid black; /* Black border */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px; /* Adjust font size */
+            font-weight: bold; /* Make the text bold */
+            cursor: pointer; /* Indicate the rectangle is clickable */
+            z-index: 7; /* Ensure it is visible above other elements */
+        }
+        .foto12 {
+            width: 70%;
+            height: 20%;
+            top: 86%;
+            right: 1%;
+            background-image: url('12.png');
+            background-size: 95%;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            z-index: 2;
+        }
+
+
+        .uppertab {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            height: 8.8%;
+            background-color: rgb(255, 255, 255);
+            border-bottom: 2px solid #999;
+            border-radius: 5px;
+            z-index: 20; /* Ensure the upper tab is on top */
+        }
+        .home-button {
+            position: absolute;
+            top: 5%;
+            right: 20%;
+            width: 4%;
+            height: 90%;
+            background-image: url('ev.png');
+            background-size: cover;
+            border: 1px solid #fff;
+            cursor: pointer;
+            z-index: 9999;
+        }
+        .project-button {
+            position: absolute;
+            top: 13%;
+            right: 15%;
+            width: 4.17%;
+            height: 80%;
+            background-image: url('pen.png');
+            background-size: cover;
+            border: 1px solid #fff;
+            cursor: pointer;
+            z-index: 9999;
+        }
+        .buttons {
+            height: 10%;
+            width: 80%;
+            padding: 10px;
+            margin: 5px;
+            text-align: center;
+            background-color: #ffffff;
+            border: 1px solid #999;
+            cursor: pointer;
+            margin: 0px 0;
+            font-size: 15px;
+            line-height: 10px; /* Adjust line height to match button height */
+        }
+
+        .settings-box {
+            position: absolute;
+            top: 60%;
+            right: 16.8%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .info-button {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            width: 4.4%;
+            height: 80%;
+            background-image: url('info.png');
+            background-size: cover;
+            border: 1px solid #fff;
+            cursor: pointer;
+            z-index: 9999;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header">AirBnB NYC</div>
+        <div class="parbox1">In this project, an in-depth analysis of New York City's AirBnB data has been conducted to glean valuable insights regarding the trends, patterns, and dynamics within the city's lodging market. By meticulously examining a comprehensive dataset encompassing diverse aspects of AirBnB listings, including pricing, property characteristics, host profiles, and geographic distribution, this analysis aims to offer a multifaceted understanding of the factors influencing the hospitality landscape in one of the world's most iconic cities. Through the exploration of key metrics and trends, this study seeks to uncover actionable insights that can inform various stakeholders, including travelers, hosts, policymakers, and industry professionals, facilitating informed decision-making and fostering a deeper understanding of the evolving dynamics of the AirBnB market in New York City.</div>
+        <div class="sub-header1">General Analysis</div>
+        <div class="parbox2">In order to gain a deeper understanding of the market and its general characteristics, the distribution of lodgings across neighborhoods and their associated prices has been analyzed first.</div>
+        <div class="parbox3">In the NYC AirBnB Market, there are a staggering total of 48884 listings. These listings contains 3 different types shared rooms, entire houses/apts and private rooms. The price per night for accomodation has a wide range between $10 to $10000 per night, with the vast majority of the listing falling between the price range of $10 to $200.</div>
+        <div class="foto1"></div>
+        <div class="foto2"></div>
+        <div class="foto3"></div>
+        <div class="parbox4">The data suggests that the bulk of the lodgings are located in Manhattan and Brooklyn, comprising 44.3% and 41.1% of all available lodgings respectively. These numbers are followed by 11.6% from Queens. Examining the prices of the lodgings in these areas, a strong correlation between these numbers can be observed. With a correlation coefficient of 0.78, it can be deduced that although the availability of lodgings in Brooklyn and Manhattan is significantly larger than in other neighbourhood, the demand for these neighbourhoods and the value perception about them is much higher, resulting in higher price tags for the lodgings. In contrast to the highest average price tagged neighbourhood group Manhattan with a price tag of $196.88, the Bronx offers the most affordable accommodations among the neighbourhood groups with an average price tag of $87.58, making it an attractive option for budget-conscious travellers.</div>
+        <div class="parbox5">On the other hand, Staten Island has the third-highest price tag with the least available number of lodgings which is also the reason that keeps the correlation coefficient below its potential value. This can be evaluated as the supply not covering the demand in this neighborhood, creating an avenue for potential hosts to benefit from.</div>
+        <div class="parbox6">Overall, it can be seen that with 52% of the listings being Entire Homes and 45.7% being Private Rooms, the distribution of lodging types is fairly balanced in NYC. With only 1159 out of 48884 listings being Shared Rooms, this lodging type is not well preferred by both hosts and customers, since it offers only a $19 difference in price compared to a private lodging ($88.92 for single room & $70.25 for shared room). The average price tag of an entire home/apartment is $211.81, yet it still represents the largest proportion of the market share. This suggests that the Airbnb industry in NYC doesn’t heavily rely on cheap price tags and solo travelers, as it does in some European countries.</div>
+        <div class="foto4"></div>
+        <div class="parbox7">The NYC Airbnb service has a total of 1137612 Reviews on the listings and 38828 of the total 48877 listings have at least one review from a former user. A closer look at these numbers shows that the listings with reviews have an average price of $141.12 in contrast to the average price of $190.98 for listings without reviews. This shows that customers tend to choose lower prices over comfort, and hence write reviews on the experience.</div>
+        <div class="foto5"></div>
+        <div class="sub-header2">For the Headhunters</div>
+        <div class="parbox8">For those seeking accommodations in NYC in the near future: The most budget-friendly option available right now is in Manhattan, with a price tag of only $10 per night, but the catch is that it requires a minimum stay of 30 days. On the other hand, the most popular listing is in Queens, with a total of 629 reviews. If you're interested (and if it's still online), the IDs of the listings are 1620248 and 9145202, respectively.</div>
+        <div class="sub-header3">Characteristics of the Market</div>
+        <div class="parbox9">After gaining general insights about the market, it is also important to understand the specific characteristics of the NYC Airbnb. With 37,455 of the total 48,884 listings stemming from different hosts, it can be seen that the market is not centralized and exhibits a diverse range of offerings from various individuals and entities. However, this doesn’t mean that there are no big fish in the sea.</div>
+        <div class="foto6"></div>
+        <div class="foto7"></div>
+        <div class="parbox10">With 327 listings in NYC, the company called Sonder has the potential of gaining $82795 per day when all the listings are booked. %97.6 of the company's listings are entire homes/apts, which significantly contributes to their high income potential. A closer look at the distribution of listings from this company reveals that all their listings are nested in Manhattan, with 218 listings placed in the Financial District, a highly valued and in-demand neighborhood.</div>
+        <div class="parbox11">Although having some listings with extraordinarily high prices, the company keeps the majority of its listings in the range of $178-$278 per night. Considering that the average price for an entire Home/apt. in Manhattan is $246.42, a $253.19 average price tag for a listing makes Sonder a particularly vicious competitor in the market since they have a reliable company name, a high number of accommodation offerings in the same neighborhood, and a strictly average price tag at the same time.<br><br> A crucial aspect of the short-term housing market is being able to get information on the accommodation from previous users and with a 1281 total number of reviews, the company can provide reliable information about its listings upfront to the customers, which further strengthens its position in the market.</div>
+        <div class="foto8"></div>
+        <div class="foto9"></div>
+        <div class="parbox12">The second top place is also held by a company rather than an individual. The company Blueground with its $70331 income potential per day and a $303.15 average price tag, also focuses on housing in Manhattan, with 230 out of their 232 listings nested there. The strategy of these two top-earning and top-supplying companies shows that there is extraordinary demand in the housing market in Manhattan. Although the company lacks sufficient reviews to inform its potential customers with only 29 total reviews, with listings explicitly including exclusive features such as gyms and only offering entire houses in their portfolio, this company presents outstanding accommodation opportunities for people who prefer comfort over price.</div>
+        <div class="foto10"></div>
+        <div class="parbox13">At the third place, we encounter an individual named Kara, who has the potential to earn $33581 per day with her 121 listings in Manhattan. Good job, Kara!</div>
+        <div class="sub-header4">Listing Distributions of the top hosts</div>
+        <div class="foto11"></div>
+        <div class="sub-header5">Key Takeaways</div>
+        <div class="parbox14">In conclusion, the analysis of New York City's Airbnb data reveals a dynamic and diverse lodging market characterized by various trends and patterns. Key insights include the dominance of Manhattan and Brooklyn in terms of lodging availability, with corresponding higher price tags reflecting the demand for these neighborhoods. Additionally, the distribution of lodging types shows a preference for entire homes/apartments, indicating a market less reliant on budget accommodations.</div>
+        <div class="parbox15">Noteworthy findings include the presence of both individual hosts and companies as significant players in the market, with notable examples like Sonder and Blueground showcasing distinctive strategies and offerings. These insights underscore the competitive landscape of the NYC Airbnb market and highlight the importance of understanding both general market dynamics and specific player strategies.<br><br>Overall, the analysis provides valuable insights for stakeholders such as travelers, hosts, policymakers, and industry professionals, enabling informed decision-making and a deeper understanding of the evolving dynamics within New York City's hospitality landscape.</div>
+        <div class="sub-header6">Information</div>
+        <div class="parbox16">Author: Tolga Maden<br><br>Link to Data Set: x <br><br>Used Coding Language: Python</div>
+        <div class="foto12"></div>
+    </div>
+
+    <div class="full-python-rectangle" onclick="openProj4()">
+        Full Python Code
+    </div>
+
+    <div class="black-rectangle1" id="rectangle1">
+        Python Code Part<br><br>
+
+        def stats(data):<br>
+        # Display the number of elements<br>
+        num_elements = len(data)<br>
+        print("Number of elements:", num_elements)<br><br>
+
+        # Display the number of different hosts<br>
+        num_unique_hosts = data['host_id'].nunique()<br>
+        print("Number of different hosts:", num_unique_hosts)<br>
+        total_price = data['price'].sum()<br><br>
+
+        # Calculate the average price per listing<br>
+        average_price = total_price / num_elements<br>
+        print("Average price per listing:", average_price)<br><br>
+
+        # Calculate the average number of reviews<br>
+        average_reviews = data['number_of_reviews'].mean()<br>
+        print(f"Average number of reviews: {average_reviews}")<br><br>
+
+        # Calculate the total review count<br>
+        total_review_count = data['number_of_reviews'].sum()<br>
+        print("Total review count of the dataset:", total_review_count)<br>
+        listings_without_reviews = len(data[data['number_of_reviews'] == 0])<br>
+        listings_with_reviews = len(data[data['number_of_reviews'] > 0])<br>
+        print("Number of listings without reviews:", listings_without_reviews)<br>
+        print("Number of listings with reviews:", listings_with_reviews)<br><br>
+
+        # Calculate the average price for listings without reviews<br>
+        average_price_without_reviews = data[data['number_of_reviews'] == 0]['price'].mean()<br>
+        print("Average price for listings without reviews:", average_price_without_reviews)<br>
+        average_price_with_reviews = data[data['number_of_reviews'] > 0]['price'].mean()<br>
+        print("Average price for listings with reviews:", average_price_with_reviews)<br>
+        listings_without_reviews = data[data['number_of_reviews'] == 0]<br>
+        listings_with_reviews = data[data['number_of_reviews'] > 0]<br><br>
+
+        # Create subplots<br>
+        fig, axs = plt.subplots(1, 2, figsize=(15, 6))<br><br>
+
+        # Plot for listings without reviews<br>
+        axs[0].scatter(listings_without_reviews['id'], listings_without_reviews['price'], color='blue', alpha=0.5)<br>
+        axs[0].set_title('Price of Listings Without Review')<br>
+        axs[0].set_xlabel('ID')<br>
+        axs[0].set_ylabel('Price ($)')<br>
+        axs[0].grid(True)<br><br>
+
+        # Plot for listings with reviews<br>
+        axs[1].scatter(listings_with_reviews['id'], listings_with_reviews['price'], color='green', alpha=0.5)<br>
+        axs[1].set_title('Price of Listings With Review')<br>
+        axs[1].set_xlabel('ID')<br>
+        axs[1].set_ylabel('Price ($)')<br>
+        axs[1].grid(True)<br><br>
+
+        # Adjust layout<br>
+        plt.tight_layout()<br>
+        plt.show()<br>
+        print("-" * 100)<br>
+
+        # Filter the dataset for listings in Manhattan<br>
+        manhattan_listings = data[data['neighbourhood_group'] == 'Manhattan']<br>
+        average_price_manhattan = manhattan_listings['price'].mean()<br>
+        print("Average price for listings in Manhattan:", average_price_manhattan)<br>
+        entire_home_listings = data[data['room_type'] == 'Entire home/apt']<br>
+        average_price_entire_home = entire_home_listings['price'].mean()<br>
+        print("Average price for listings with room type 'Entire Home':", average_price_entire_home)<br>
+        manhattan_entire_home_listings = manhattan_listings[manhattan_listings['room_type'] == 'Entire home/apt']<br>
+        average_price_whole_houses_manhattan = manhattan_entire_home_listings['price'].mean()<br>
+        print("Average price for whole houses in Manhattan:", average_price_whole_houses_manhattan)<br>
+        print("-" * 100)<br><br>
+
+        # Display neighbourhood_group and count of listings in each group<br>
+        neighbourhood_group_stats = data['neighbourhood_group'].value_counts()<br>
+        print("\nNeighbourhood Group Distribution:")<br>
+        print(neighbourhood_group_stats)<br>
+        avg_price_neighbourhood_group = data.groupby('neighbourhood_group')['price'].mean()<br><br>
+
+        # Create a DataFrame to hold counts and average prices for neighbourhood groups<br>
+        neighbourhood_group_stats_df = pd.DataFrame({<br>
+        'Neighbourhood_Group': avg_price_neighbourhood_group.index,<br>
+        'Average_Price': avg_price_neighbourhood_group.values,<br>
+        'Count': neighbourhood_group_stats[avg_price_neighbourhood_group.index].values})<br><br>
+
+        # Sort the DataFrame by the count of listings in each neighbourhood group<br>
+        neighbourhood_group_stats_df = neighbourhood_group_stats_df.sort_values(by='Count', ascending=False)<br>
+        print("\nAverage Price for Each Neighbourhood Group:")<br>
+        for index, row in neighbourhood_group_stats_df.iterrows():<br>
+        print(f"{row['Neighbourhood_Group']}: ${row['Average_Price']:.2f}")<br><br>
+
+        # Display the neighbourhood group with the maximum price<br>
+        max_price_neighbourhood_group = avg_price_neighbourhood_group.idxmax()<br>
+        max_price_neighbourhood_group_price = avg_price_neighbourhood_group.max()<br>
+        print("\nNeighbourhood Group with Maximum Price:")<br>
+        print("Neighbourhood Group:", max_price_neighbourhood_group)<br>
+        print("Average Price: ${:.2f}".format(max_price_neighbourhood_group_price))<br><br>
+
+        # Display the neighbourhood group with the minimum price<br>
+        min_price_neighbourhood_group = avg_price_neighbourhood_group.idxmin()<br>
+        min_price_neighbourhood_group_price = avg_price_neighbourhood_group.min()<br>
+        print("\nNeighbourhood Group with Minimum Price:")<br>
+        print("Neighbourhood Group:", min_price_neighbourhood_group)<br>
+        print("Average Price: ${:.2f}".format(min_price_neighbourhood_group_price))<br><br>
+
+        # Calculate correlation coefficient between count and price<br>
+        correlation_coefficient = neighbourhood_group_stats_df['Count'].corr(<br>
+        neighbourhood_group_stats_df['Average_Price'])<br>
+        print("\nCorrelation Coefficient between Count and Average Price:", correlation_coefficient)<br>
+        print("-" * 100)<br><br>
+
+        # Display neighbourhood and count of listings in each neighbourhood<br>
+        neighbourhood_counts = data['neighbourhood'].value_counts().head(10)<br>
+        print("\nNeighbourhood Distribution:")<br>
+        for neighbourhood, count in neighbourhood_counts.items():<br>
+        print(f"{neighbourhood}: {count}")<br>
+        avg_price_neighbourhood_top_10 = \<br>
+        data[data['neighbourhood'].isin(neighbourhood_counts.index)].groupby('neighbourhood')['price'].mean()<br><br>
+
+        # Create a DataFrame to hold counts and average prices<br>
+        neighbourhood_stats = pd.DataFrame({<br>
+        'Neighbourhood': avg_price_neighbourhood_top_10.index,<br>
+        'Average_Price': avg_price_neighbourhood_top_10.values,<br>
+        'Count': neighbourhood_counts[avg_price_neighbourhood_top_10.index].values})<br><br>
+
+        # Sort the DataFrame by the count of listings in each neighbourhood<br>
+        neighbourhood_stats = neighbourhood_stats.sort_values(by='Count', ascending=False)<br>
+        print("\nAverage Price for Each Neighbourhood:")<br>
+        for index, row in neighbourhood_stats.iterrows():<br>
+        print(f"{row['Neighbourhood']}: ${row['Average_Price']:.2f}")<br><br>
+
+        # Display the neighbourhood group with the maximum price<br>
+        max_price_avg_price_neighbourhood_top_10 = avg_price_neighbourhood_top_10.idxmax()<br>
+        max_price_avg_price_neighbourhood_top_10_price = avg_price_neighbourhood_top_10.max()<br>
+        print("\nNeighbourhood with Maximum Price:")<br>
+        print("Neighbourhood:", max_price_avg_price_neighbourhood_top_10)<br>
+        print("Average Price: ${:.2f}".format(max_price_avg_price_neighbourhood_top_10_price))<br><br>
+
+        # Display the neighbourhood group with the minimum price<br>
+        min_price_avg_price_neighbourhood_top_10 = avg_price_neighbourhood_top_10.idxmin()<br>
+        min_price_avg_price_neighbourhood_top_10_price = avg_price_neighbourhood_top_10.min()<br>
+        print("\nNeighbourhood with Minimum Price:")<br>
+        print("Neighbourhood:", min_price_avg_price_neighbourhood_top_10)<br>
+        print("Average Price: ${:.2f}".format(min_price_avg_price_neighbourhood_top_10_price))<br>
+        print("-" * 100)<br><br>
+
+        # Display room_type and count of listings for each room type<br>
+        room_type_stats = data['room_type'].value_counts()<br>
+        print("\nRoom Type Distribution:")<br>
+        for room_type, count in room_type_stats.items():<br>
+        print(f"{room_type}: {count}")<br><br>
+
+        # Calculate average price for each room type<br>
+        avg_price_room_type = data.groupby('room_type')['price'].mean()<br>
+        print("\nAverage Price for Each Room Type:")<br>
+        for room_type, price in avg_price_room_type.items():<br>
+        print(f"{room_type}: ${price:.2f}")<br>
+        print("-" * 100)<br><br>
+
+        # Display the item with the minimum price<br>
+        min_price_item = data.loc[data['price'].idxmin()]<br>
+        print("\nItem with Minimum Price:")<br>
+        min_price_item_filtered = min_price_item.drop(<br>
+        ['last_review', 'reviews_per_month', 'calculated_host_listings_count', 'availability_365'])<br>
+        print(min_price_item_filtered)<br><br>
+
+        # Display the item with the maximum price<br>
+        max_price_item = data.loc[data['price'].idxmax()]<br>
+        print("\nItem with Maximum Price:")<br>
+        max_price_item_filtered = max_price_item.drop(<br>
+        ['last_review', 'reviews_per_month', 'calculated_host_listings_count', 'availability_365'])<br>
+        print(max_price_item_filtered)<br>
+        print("-" * 100)<br><br>
+
+        # Group the data by 'host_id' and sum the 'number_of_reviews' for each group<br>
+        host_reviews_sum = data.groupby('host_id').agg(<br>
+        {'number_of_reviews': 'sum', 'host_name': 'first', 'id': 'count'})<br>
+        max_reviews_host_id = host_reviews_sum['number_of_reviews'].idxmax()<br>
+        max_reviews_count = host_reviews_sum['number_of_reviews'].max()<br>
+        max_reviews_host_name = host_reviews_sum.loc[max_reviews_host_id, 'host_name']<br>
+        max_reviews_host_items = host_reviews_sum.loc[max_reviews_host_id, 'id']<br>
+        print("Host with the Maximum Reviews")<br>
+        print("host_id", " " * 20, max_reviews_host_id)<br>
+        print("name", " " * 27, max_reviews_host_name)<br>
+        print("number_of_reviews", " " * 14, max_reviews_count)<br>
+        print("Number_of_items", " " * 19, max_reviews_host_items)<br>
+        print("-" * 100)<br><br>
+
+        # Display the item with the most reviews<br>
+        most_reviews_item = data.loc[data['number_of_reviews'].idxmax()]<br>
+        print("\nItem with Most Reviews:")<br>
+        most_reviews_item_filtered = most_reviews_item.drop(<br>
+        ['last_review', 'reviews_per_month', 'calculated_host_listings_count', 'availability_365'])<br>
+        print(most_reviews_item_filtered)<br><br>
+
+        # Call the functions to plot the distributions and display statistics<br>
+        plot_distribution(data)<br>
+        stats(data)<br><br>
+
+        print("\nGeneral information delivered.")<br>
+        print("-"*100)<br><br>
+    </div>
+    <div class="black-rectangle2" id="rectangle2">
+        Python Code Part<br><br>
+
+        def top3stats():<br>
+        for i, person_data in enumerate(top_3_person_data):<br>
+        host_id = top_3_hosts[i][0]  # Extract host ID<br>
+        person_name = top_3_hosts[i][1]  # Extract person's name<br>
+        num_entries = len(person_data)  # Number of entries for this person<br>
+        print(f"Host ID: {host_id}")<br>
+        print(f"Name: {person_name}")<br>
+        print(f"Number of Entries: {num_entries}")<br>
+        # Calculate average price<br>
+        average_price = (person_data['price']).mean()<br>
+        print(f"Average Price: ${average_price}")<br>
+        # Calculate total number of reviews<br>
+        total_reviews = person_data['number_of_reviews'].sum()<br>
+        print(f"Total Number of Reviews: {total_reviews}")<br><br>
+
+        # Unique neighbourhood group names and their counts<br>
+        unique_neighbourhood_group = person_data['neighbourhood_group'].value_counts()<br>
+        print("\nNeighbourhood General Distribution:")<br>
+        for neighbourhood_group, count in unique_neighbourhood_group.items():<br>
+        print(f"{neighbourhood_group}: {count}")<br><br>
+
+        # Unique neighbourhood names and their counts<br>
+        unique_neighbourhood = person_data['neighbourhood'].value_counts()<br>
+        print("\nNeighbourhood Distribution:")<br>
+        for neighbourhood, count in unique_neighbourhood.items():<br>
+        print(f"{neighbourhood}: {count}")<br><br>
+
+        # Calculate total achievable price<br>
+        total_income = (person_data['price']).sum()<br>
+        print(f"\nIncome per day: ${total_income}")<br><br>
+
+        # Find the item with the highest price<br>
+        highest_price_item = person_data.loc[person_data['price'].idxmax()]<br>
+        print("\nHighest Price Item:")<br>
+        print(highest_price_item)<br><br>
+
+        # Find the item with the lowest price<br>
+        lowest_price_item = person_data.loc[person_data['price'].idxmin()]<br>
+        print("\nLowest Price Item:")<br>
+        print(lowest_price_item)<br><br>
+
+        # Find the median price<br>
+        median_price = np.median(person_data['price'])<br>
+        # Define the 100-interval band around the median<br>
+        lower_bound = int(median_price - 50)<br>
+        upper_bound = int(median_price + 50)<br>
+        interval_band = f"${lower_bound}-{upper_bound}"<br>
+        print(f"\n100-interval band around the median price ({median_price}): {interval_band}")<br><br>
+
+        print()<br>
+        print("-" * 100)<br><br>
+    </div>
+    <div class="black-rectangle3" id="rectangle3">
+        Python Code Part<br><br>
+        def cluster(data):<br>
+        # Group the data by host_id and count occurrences<br>
+        host_id_counts = data['host_id'].value_counts()<br><br>
+
+        # Filter for host_ids that repeat<br>
+        repeating_host_ids = host_id_counts[host_id_counts > 1]<br><br>
+
+        # Create a list to store tuples of host_id, host_name, and the number of repetitions<br>
+        host_info_list = []<br>
+        for host_id, count in repeating_host_ids.items():v
+        host_name = data[data['host_id'] == host_id]['host_name'].iloc[0]<br>
+        host_info_list.append((host_id, host_name, count))<br><br>
+
+        # Sort the host_info_list based on the count of repetitions and get the top 3 hosts<br>
+        top_3_hosts = sorted(host_info_list, key=lambda x: x[2], reverse=True)[:3]<br><br>
+
+        return data, top_3_hosts<br>
+        data_clustered, top_3_hosts = cluster(data)<br><br>
+
+        def map_drawer(data_clustered,top_3_hosts):<br>
+        print("-" * 100)<br>
+        print("Maps for top 3 hosts\n")<br><br>
+        # Get the host IDs of the top 3 hosts<br>
+        top_3_host_ids = [host[0] for host in top_3_hosts]<br><br>
+
+        # Create an empty list to store the data for the top 3 hosts<br>
+        top_3_person_data_map = []<br><br>
+
+        # Loop through the top 3 host IDs<br>
+        for host_id in top_3_host_ids:<br>
+        person_data_map = data[data['host_id'] == host_id]<br>
+        person_data_map = person_data_map[<br>
+        ['host_id', 'latitude', 'longitude']]<br><br>
+        # Append the data to the list<br>
+        top_3_person_data_map.append(person_data_map)<br><br>
+
+        # Create a dictionary to map each host ID to its list of coordinates<br>
+        host_coordinates_map = {}<br><br>
+
+        # Loop through each DataFrame in top_3_person_data<br>
+        for person_data_map in top_3_person_data_map:<br>
+        host_id = person_data_map['host_id'].iloc[0]<br><br>
+
+        # Get latitude and longitude values for the current host<br>
+        latitudes = person_data_map['latitude'].tolist()<br>
+        longitudes = person_data_map['longitude'].tolist()<br><br>
+        coordinates = list(zip(longitudes, latitudes))<br><br>
+
+        # Add coordinates to the dictionary<br>
+        if host_id not in host_coordinates_map:<br>
+        host_coordinates_map[host_id] = coordinates<br>
+        else:<br>
+        host_coordinates_map[host_id].extend(coordinates)<br><br>
+
+        # Print or use these lists as needed<br>
+        for host_id, coordinates in host_coordinates_map.items():<br>
+        print(f"Host {host_id} Coordinates:", coordinates)<br>
+        print(len(coordinates))<br><br>
+
+        # Read the image<br>
+        image = cv2.imread('newyork/ny.png', cv2.IMREAD_COLOR)<br>
+        image_with_dots = image.copy()<br><br>
+
+        # Get the dimensions of the image<br>
+        height_red, width_red, _ = image.shape<br><br>
+        # Calculate the coordinates of the center point<br>
+        center_x_red = width_red // 2<br>
+        center_y_red = height_red // 2<br>
+        dot_x = center_x_red + 148<br>
+        dot_y = center_y_red + 390<br>
+        red = (0, 0, 255)<br><br>
+        # Draw a red dot at the calculated position<br>
+        cv2.circle(image, (dot_x, dot_y), 5, red, -1)<br>
+        coordinates_red = (-73.9004905, 40.5757, dot_x, dot_y)<br><br>
+
+        # Get the dimensions of the image<br>
+        height_green, width_green, _ = image.shape<br><br>
+        # Calculate the coordinates of the center point<br>
+        center_x_green = width_green // 2<br>
+        center_y_green = height_green // 2<br>
+        dot_x_green = center_x_green - 58<br>
+        dot_y_green = center_y_green - 260<br>
+        green = (0, 255, 0)  # OpenCV uses BGR instead of RGB<br><br>
+        # Draw a blue dot at the calculated position<br>
+        cv2.circle(image, (dot_x_green, dot_y_green), 5, green, -1)<br>
+        coordinates_green = (-73.996798, 40.791336, dot_x_green, dot_y_green)<br><br>
+
+        # Get the dimensions of the image<br>
+        height_purple, width_purple, _ = image.shape<br><br>
+        # Calculate the coordinates of the center point<br>
+        center_x_purple = width_purple // 2<br>
+        center_y_purple = height_green // 2<br>
+        dot_x_purple = center_x_purple - 58<br>
+        dot_y_purple = center_y_purple + 390<br>
+        purple = (255, 0, 255)  # OpenCV uses BGR instead of RGB<br><br>
+        # Draw a blue dot at the calculated position<br>
+        cv2.circle(image, (dot_x_purple, dot_y_purple), 5, purple, -1)<br>
+        coordinates_purple = (-73.996798, 40.5757, dot_x_purple, dot_y_purple)<br><br>
+
+        purple_y_minus_green_y_image = coordinates_purple[3] - coordinates_green[3]<br>
+        purple_y_minus_green_y_reel = coordinates_purple[1] - coordinates_green[1]<br>
+        scale_heigth = purple_y_minus_green_y_reel / purple_y_minus_green_y_image<br><br>
+
+        purple_y_minus_red_y_image = coordinates_red[2] - coordinates_purple[2]<br>
+        purple_y_minus_red_y_reel = coordinates_purple[0] - coordinates_red[0]<br>
+        scale_width = purple_y_minus_red_y_reel / purple_y_minus_red_y_image<br><br>
+
+        def scaler_width(coordinates_purple, coordinates_red, target_width):<br>
+        a = coordinates_purple[0] - coordinates_red[0]<br>
+        b = target_width - coordinates_red[0]<br>
+        c = coordinates_purple[2] - coordinates_red[2]<br>
+        d = (a / b) / c<br>
+        e = 1 / d<br>
+        result = e + coordinates_red[2]<br>
+        return result<br><br>
+
+        def scaler_height(coordinates_green, coordinates_purple, target_height):<br>
+        x = coordinates_green[1] - coordinates_purple[1]<br>
+        y = target_height - coordinates_purple[1]<br>
+        z = coordinates_green[3] - coordinates_purple[3]<br>
+        d = (x / y) / z<br>
+        q = 1 / d<br>
+        result = q + coordinates_purple[3]<br>
+        return result<br><br>
+
+        # Iterate over host_coordinates_map<br>
+        for host_id, coordinates in host_coordinates_map.items():<br>
+        image_with_dots_copy = image_with_dots.copy()<br>
+        host_name = data[data['host_id'] == host_id]['host_name'].iloc[0]<br><br>
+
+        # Plot the coordinates on the map<br>
+        for coord in coordinates:<br>
+        # Calculate the position of each dot based on latitude and longitude<br>
+        dot_x = int(scaler_width(coordinates_purple, coordinates_red, coord[0]))<br>
+        dot_y = int(scaler_height(coordinates_green, coordinates_purple, coord[1]))<br><br>
+
+        # Draw the smaller dot on the map<br>
+        cv2.circle(image_with_dots_copy, (dot_x, dot_y), 3, (255, 0, 0), -1)  # Blue dot<br><br>
+
+        # Display the map with smaller dots<br>
+        cv2.imshow(f"Map for Host {host_name}", image_with_dots_copy)<br>
+        cv2.waitKey(0)<br>
+        cv2.destroyAllWindows()<br><br>
+
+        print("Maps have been drawn.")<br>
+        print("-" * 100)<br><br>
+
+
+        map_drawer(data_clustered,top_3_hosts)
+    </div>
+
+    <div class="uppertab">
+        <div class="home-button" onclick="openHome()"></div>
+        <div class="project-button" onclick="togglesettingsBox()"></div>
+        <div class="settings-box" id="settingsBox">
+            <div class="buttons" onclick="openProj1()">Project 1</div>
+            <div class="buttons" onclick="openProj2()">Project 2</div>
+            <div class="buttons" onclick="openProj3()">Project 3</div>
+        </div>
+        <div class="info-button" onclick="openContact()"></div>
+    </div>
+
+
+    <script>
+        function openProj1() {
+            window.open('Project1.html', '_blank');
+            window.close();
+        }
+        function openProj2() {
+            window.open('Project2.html', '_blank');
+            window.close();
+        }
+        function openProj3() {
+            window.open('Project3.html', '_blank');
+            window.close();
+        }
+        function openHome() {
+            window.open('index.html', '_blank');
+            window.close();
+        }
+        function openContact() {
+            window.open('Contact.html', '_blank');
+            window.close();
+        }
+        
+        function togglesettingsBox() {
+            var settingsBox = document.getElementById('settingsBox');
+            if (settingsBox.style.display === 'none') {
+                settingsBox.style.display = 'flex';
+            } else {
+                settingsBox.style.display = 'none';
+            }
+        }
+        document.addEventListener('click', function(event) {
+            var settingsBox = document.getElementById('settingsBox');
+            var projectButton = document.querySelector('.project-button');
+
+            // Check if the clicked element is not inside the settings box and not the project button
+            if (!settingsBox.contains(event.target) && event.target !== projectButton) {
+                settingsBox.style.display = 'none';
+            }
+        });
+
+         // Initialize the state for each rectangle
+        const rectangles = {
+            rectangle1: false, // State for rectangle 1
+            rectangle2: false, // State for rectangle 2
+            rectangle3: false  // State for rectangle 3
+        };
+
+        // Add event listeners for all rectangles
+        document.getElementById('rectangle1').addEventListener('click', function () {
+            toggleRectangleHeight(this, 'rectangle1');
+        });
+
+        document.getElementById('rectangle2').addEventListener('click', function () {
+            toggleRectangleHeight(this, 'rectangle2');
+        });
+
+        document.getElementById('rectangle3').addEventListener('click', function () {
+            toggleRectangleHeight(this, 'rectangle3');
+        });
+
+        function toggleRectangleHeight(rectangleElement, rectangleId) {
+            if (rectangles[rectangleId]) {
+                rectangleElement.style.height = '10%'; // Collapse to initial height
+                rectangleElement.style.width = '28%'; // Automatically adjust height to fit content
+                rectangleElement.style.overflow = 'hidden'; // Hide any overflowed content
+            } else {
+                rectangleElement.style.height = 'auto'; // Automatically adjust height to fit content
+                rectangleElement.style.width = 'auto'; // Automatically adjust height to fit content
+                rectangleElement.style.overflow = 'visible'; // Show all content
+            }
+            rectangles[rectangleId] = !rectangles[rectangleId]; // Toggle the state
+        }
+        function openProj4() {
+            window.open('FullPython2.html', '_blank');
+            window.close();
+        }
+    </script>
+
+</body>
+</html>

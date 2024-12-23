@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            background-color: #b1c8d3;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .page {
+            position: relative;
+            width: 56.5%;
+            height: 700px;
+            background-size: cover;
+            background-position: center;
+            background-color: #ffffff;
+            border: 2px solid #a1a089;
+            padding-top: 8%; /* Add 10% break from the top */
+            padding-left: 3%; /* Add 3% break from the left */
+            text-align: left; /* Align text to the left */
+            font-size: 16px; /* Adjust font size as needed */
+            line-height: 1.8; /* Increase line height for larger breaks */
+
+        }
+
+        .uppertab {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            height: 8.8%;
+            background-color: rgb(255, 255, 255);
+            border-bottom: 2px solid #999;
+            border-radius: 5px;
+            z-index: 3; /* Ensure the upper tab is on top */
+        }
+        .home-button {
+            position: absolute;
+            top: 5%;
+            right: 20%;
+            width: 4%;
+            height: 90%;
+            background-image: url('ev.png');
+            background-size: cover;
+            border: 1px solid #fff;
+            cursor: pointer;
+            z-index: 9999;
+        }
+        .project-button {
+            position: absolute;
+            top: 13%;
+            right: 15%;
+            width: 4.17%;
+            height: 80%;
+            background-image: url('pen.png');
+            background-size: cover;
+            border: 1px solid #fff;
+            cursor: pointer;
+            z-index: 9999;
+        }
+        .buttons {
+            height: 10%;
+            width: 80%;
+            padding: 10px;
+            margin: 5px;
+            text-align: center;
+            background-color: #ffffff;
+            border: 1px solid #999;
+            cursor: pointer;
+            margin: 0px 0;
+            font-size: 15px;
+            line-height: 10px; /* Adjust line height to match button height */
+        }
+        .settings-box {
+            position: absolute;
+            top: 60%;
+            right: 16.8%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .info-button {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            width: 4.4%;
+            height: 80%;
+            background-image: url('info.png');
+            background-size: cover;
+            border: 1px solid #fff;
+            cursor: pointer;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <span style="font-size: 1.3em; font-weight: bold;">Welcome to my personal Project Portfolio</span><br><br>
+    The projects listed here are intended for practice and entertainment purposes.<br>
+    Although the sources and information used are properly cited, the projects should not be considered investment advice. <br>
+    The website is built using HTML, CSS, and JavaScript, and minor shifts in the interface may occur. If you encounter any issues with the website or the projects, please contact me using the email address below so that I can improve the user experience. <br>
+    Thank you.. <br><br>
+    <span style="font-weight: bold;">Mail:</span> tolga.maden@rwth-aachen.de<br>
+    <span style="font-weight: bold;">Phone 1:</span>  +49 15227253190<br>
+    <span style="font-weight: bold;">Phone 2:</span>  +90 5352651506
+
+
+
+</div>
+<div class="uppertab">
+    <div class="home-button" onclick="openHome()"></div>
+    <div class="project-button" onclick="togglesettingsBox()"></div>
+    <div class="settings-box" id="settingsBox">
+        <div class="buttons" onclick="openProj1()">Project 1</div>
+        <div class="buttons" onclick="openProj2()">Project 2</div>
+        <div class="buttons" onclick="openProj3()">Project 3</div>
+    </div>
+    <div class="info-button" onclick="openContact()"></div>
+</div>
+
+
+<script>
+    function openProj1() {
+        window.open('Project1.html', '_blank');
+        window.close();
+    }
+    function openProj2() {
+        window.open('Project2.html', '_blank');
+        window.close();
+    }
+    function openProj3() {
+        window.open('Project3.html', '_blank');
+        window.close();
+    }
+    function openHome() {
+        window.open('index.html', '_blank');
+        window.close();
+    }
+    function openContact() {
+        window.open('Contact.html', '_blank');
+        window.close();
+    }
+
+    function togglesettingsBox() {
+        var settingsBox = document.getElementById('settingsBox');
+        if (settingsBox.style.display === 'none') {
+            settingsBox.style.display = 'flex';
+        } else {
+            settingsBox.style.display = 'none';
+        }
+    }
+    document.addEventListener('click', function(event) {
+        var settingsBox = document.getElementById('settingsBox');
+        var projectButton = document.querySelector('.project-button');
+
+        // Check if the clicked element is not inside the settings box and not the project button
+        if (!settingsBox.contains(event.target) && event.target !== projectButton) {
+            settingsBox.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>

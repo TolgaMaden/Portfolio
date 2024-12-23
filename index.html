@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            background-color: #b1c8d3;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .page {
+            position: relative;
+            width: 55%;
+            height: 2000px;
+            right: 10%;
+            background-size: cover;
+            background-position: center;
+            background-color: #ffffff;
+            border: 2px solid #a1a089;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .profile-photo {
+            width: 25%;
+            height: 10%;
+            top: 10%;
+            left: 8%;
+            border-radius: 50%;
+            background-image: url('IMG_3003.jpg');
+            background-size: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: absolute;
+            z-index: 2;
+        }
+        .banner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 15%;
+            background-image: url('ban2.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1;
+        }
+        .name {
+            position: absolute;
+            top: 21%;
+            left: 10%;
+            font-size: 29px;
+            color: #333;
+        }
+        .project-box1 {
+            width: 28%;
+            height: 13%;
+            background-image: url('EV.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 2px solid #000;
+            position: absolute;
+            top: 33%;
+            left: 20%;
+            transform: translate(-50%, -50%);
+            border-radius: 15px;
+            z-index: 2;
+            cursor: pointer;
+        }
+        .project1 {
+            position: absolute;
+            top: 40.6%;
+            left: 15%;
+            font-size: 24px;
+            color: #333;
+        }
+        .project-box2 {
+            width: 28%;
+            height: 13%;
+            background-image: url('BNB.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 2px solid #000;
+            position: absolute;
+            top: 33%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 15px;
+            z-index: 2;
+            cursor: pointer;
+        }
+        .project-box2:hover {
+            background-image: url('proj2.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .project2 {
+            position: absolute;
+            top: 40.6%;
+            left: 44%;
+            font-size: 24px;
+            color: #333;
+        }
+        .project-box3 {
+            width: 28%;
+            height: 13%;
+            background-image: url('PV.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 2px solid #000;
+            position: absolute;
+            top: 33%;
+            left: 80%;
+            transform: translate(-50%, -50%);
+            border-radius: 15px;
+            z-index: 2;
+            cursor: pointer;
+        }
+        .project-box3:hover {
+            background-image: url('proj3.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .project3 {
+            position: absolute;
+            top: 40.6%;
+            left: 73%;
+            font-size: 24px;
+            color: #333;
+        }
+        .project-box4 {
+            width: 28%;
+            height: 13%;
+            background-image: url('plus.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 2px solid #000;
+            position: absolute;
+            top: 51%;
+            left: 20%;
+            transform: translate(-50%, -50%);
+            border-radius: 15px;
+            z-index: 2;
+        }
+        .project4 {
+            position: absolute;
+            top: 59%;
+            left: 15%;
+            font-size: 24px;
+            color: #000000;
+        }
+
+
+
+
+
+        .infobox_right {
+            position: fixed;
+            top: 20%;
+            right: 5%;
+            width: 25%;
+            height: 65%;
+            background-color: rgb(255, 255, 255);
+            border: 2px solid #999;
+            border-radius: 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .portfolio {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 28px;
+            color: #000000;
+        }
+        .proj-num {
+            position: absolute;
+            top: 55%;
+            left: 15%;
+            font-size: 20px;
+            color: #000000;
+        }
+        .proj-status {
+            position: absolute;
+            top: 70%;
+            left: 15%;
+            font-size: 20px;
+            color: #000000;
+        }
+        .proj-link {
+            position: absolute;
+            top: 85%;
+            left: 15%;
+            font-size: 20px;
+            color: #000000;
+        }
+        
+        .circle1 {
+            width: 20%;
+            height: 14%;
+            top: 22%;
+            left: 10%;
+            border-radius: 50%;
+            background-image: url('co2.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 2px solid #000;
+            position: absolute;
+        }
+        .circle1:hover {
+            background-image: none;
+            background-color: #000;
+            color: rgb(0, 0, 0);
+            border: 2px solid #000;
+            font-size: 30px;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .circle1:hover::after {
+            content: "33%";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 28px;
+            color: #ffffff;
+        }
+        .circle1-name {
+            position: absolute;
+            top: 41%;
+            left: 19%;
+            transform: translate(-50%, -50%);
+            font-size: 15px;
+            color: #000000;
+        }
+
+        .circle2 {
+            width: 20%;
+            height: 14%;
+            top: 22%;
+            left: 40%;
+            border-radius: 50%;
+            background-image: url('mny.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 2px solid #000;
+            position: absolute;
+        }
+        .circle2:hover {
+            background-image: none;
+            background-color: #000;
+            color: rgb(0, 0, 0);
+            border: 2px solid #000;
+            font-size: 30px;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .circle2:hover::after {
+            content: "33%";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 28px;
+            color: #ffffff;
+        }
+        .circle2-name {
+            position: absolute;
+            top: 41%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 15px;
+            color: #000000;
+        }
+
+        .circle3 {
+            width: 20%;
+            height: 14%;
+            top: 22%;
+            left: 70%;
+            border-radius: 50%;
+            background-image: url('vrnch.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 2px solid #000;
+            position: absolute;
+        }
+        .circle3:hover {
+            background-image: none;
+            background-color: #000;
+            color: rgb(0, 0, 0);
+            border: 2px solid #000;
+            font-size: 30px;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .circle3:hover::after {
+            content: "33%";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 28px;
+            color: #ffffff;
+        }
+        .circle3-name {
+            position: absolute;
+            top: 41%; /* Adjust the percentage value to vertically center */
+            left: 81%; /* Adjust the percentage value to horizontally center */
+            transform: translate(-50%, -50%); /* Center the text precisely */
+            font-size: 15px;
+            color: #000000;
+        }
+
+
+
+
+        .uppertab {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            height: 8.8%;
+            background-color: rgb(255, 255, 255);
+            border-bottom: 2px solid #999;
+            border-radius: 5px;
+            z-index: 3; /* Ensure the upper tab is on top */
+        }
+        .home-button {
+            position: absolute;
+            top: 5%;
+            right: 20%;
+            width: 4%;
+            height: 90%;
+            background-image: url('ev.png');
+            background-size: cover;
+            border: 1px solid #fff;
+            cursor: pointer;
+            z-index: 9999;
+        }
+        .project-button {
+            position: absolute;
+            top: 13%;
+            right: 15%;
+            width: 4.17%;
+            height: 80%;
+            background-image: url('pen.png');
+            background-size: cover;
+            border: 1px solid #fff;
+            cursor: pointer;
+            z-index: 9999;
+        }
+        .buttons {
+            height: 10%;
+            width: 80%;
+            padding: 10px;
+            margin: 5px;
+            text-align: center;
+            background-color: #ffffff;
+            border: 1px solid #999;
+            cursor: pointer;
+            margin: 0px 0;
+            font-size: 15px;
+            line-height: 10px; /* Adjust line height to match button height */
+        }
+
+        .settings-box {
+            position: absolute;
+            top: 60%;
+            right: 16.8%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .info-button {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            width: 4.4%;
+            height: 80%;
+            background-image: url('info.png');
+            background-size: cover;
+            border: 1px solid #fff;
+            cursor: pointer;
+            z-index: 9999;
+        }
+
+        
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="profile-photo"></div>
+        <div class="banner"></div>
+        <div class="name">Tolga Maden</div>
+        <div class="project-box1" onclick="openProj1()"></div>        
+        <div class="project-box2" onclick="openProj2()"></div>
+        <div class="project-box3" onclick="openProj3()"></div>
+        <div class="project-box4"></div>
+        <div class="project1">Project 1</div>
+        <div class="project2">Project 2</div>
+        <div class="project3">Project 3</div>
+        <div class="project4">Coming<br>&nbsp;&nbsp;Soon</div>
+
+    </div>
+
+    <div class="infobox_right">
+        <div class="portfolio">Portfolio Info</div>
+        <div class="proj-num">Projects:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3</div>
+        <div class="proj-status">Status:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Available</div>
+        <div class="edit_portfolio" onclick=""></div>
+        <div class="proj-link">Link</div>
+        <div class="circle1"></div>
+        <div class="circle2"></div>
+        <div class="circle3"></div>
+        <div class="circle1-name">Lifecycle<br>Analysis</div>
+        <div class="circle2-name">&nbsp;Market<br>Analysis</div>
+        <div class="circle3-name">Technical<br>&nbsp;Analysis</div>
+    </div>
+
+    <div class="uppertab">
+        <div class="home-button" onclick="openHome()"></div>
+        <div class="project-button" onclick="togglesettingsBox()"></div>
+        <div class="settings-box" id="settingsBox">
+            <div class="buttons" onclick="openProj1()">Project 1</div>
+            <div class="buttons" onclick="openProj2()">Project 2</div>
+            <div class="buttons" onclick="openProj3()">Project 3</div>
+        </div>
+        <div class="info-button" onclick="openContact()"></div>
+
+    </div>
+
+ 
+
+    <script>
+        function openProj1() {
+            window.open('Project1.html', '_blank');
+            window.close();
+        }
+        function openProj2() {
+            window.open('Project2.html', '_blank');
+            window.close();
+        }
+        function openProj3() {
+            window.open('Project3.html', '_blank');
+            window.close();
+        }
+        function openHome() {
+            window.open('index.html', '_blank');
+            window.close();
+        }
+        function openContact() {
+            window.open('Contact.html', '_blank');
+            window.close();
+        }
+        function togglesettingsBox() {
+            var settingsBox = document.getElementById('settingsBox');
+            if (settingsBox.style.display === 'none') {
+                settingsBox.style.display = 'flex';
+            } else {
+                settingsBox.style.display = 'none';
+            }
+        }
+        document.addEventListener('click', function(event) {
+            var settingsBox = document.getElementById('settingsBox');
+            var projectButton = document.querySelector('.project-button');
+
+            // Check if the clicked element is not inside the settings box and not the project button
+            if (!settingsBox.contains(event.target) && event.target !== projectButton) {
+                settingsBox.style.display = 'none';
+            }
+        });
+
+    </script>
+</body>
+</html>
+

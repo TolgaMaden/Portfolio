@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            background-color: #b1c8d3;
+            justify-content: center;
+            align-items: center;
+        }
+
+        
+        .page {
+            position: relative;
+            width: 56.5%;
+            height: 13800px;
+            background-size: cover;
+            background-position: center;
+            background-color: #ffffff;
+            border: 2px solid #a1a089;
+            padding-top: 8%; /* Add 10% break from the top */
+            padding-left: 3%; /* Add 3% break from the left */
+            text-align: left; /* Align text to the left */
+            font-size: 16px; /* Adjust font size as needed */
+        }
+
+
+
+
+        .uppertab {
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            height: 8.8%;
+            background-color: rgb(255, 255, 255);
+            border-bottom: 2px solid #999;
+            border-radius: 5px;
+            z-index: 3; /* Ensure the upper tab is on top */
+        }
+        .home-button {
+            position: absolute;
+            top: 5%;
+            right: 20%;
+            width: 4%;
+            height: 90%;
+            background-image: url('ev.png');
+            background-size: cover;
+            border: 1px solid #fff;
+            cursor: pointer;
+            z-index: 9999;
+        }
+        .project-button {
+            position: absolute;
+            top: 13%;
+            right: 15%;
+            width: 4.17%;
+            height: 80%;
+            background-image: url('pen.png');
+            background-size: cover;
+            border: 1px solid #fff;
+            cursor: pointer;
+            z-index: 9999;
+        }
+        .buttons {
+            height: 10%;
+            width: 80%;
+            padding: 10px;
+            margin: 5px;
+            text-align: center;
+            background-color: #ffffff;
+            border: 1px solid #999;
+            cursor: pointer;
+            margin: 0px 0;
+            font-size: 15px;
+            line-height: 10px; /* Adjust line height to match button height */
+        }
+
+        .settings-box {
+            position: absolute;
+            top: 60%;
+            right: 16.8%;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .info-button {
+            position: absolute;
+            top: 10%;
+            right: 10%;
+            width: 4.4%;
+            height: 80%;
+            background-image: url('info.png');
+            background-size: cover;
+            border: 1px solid #fff;
+            cursor: pointer;
+            z-index: 9999;
+        }
+
+        .return-button {
+            position: fixed;
+            bottom: 10px;
+            right: 10px;
+            width: 150px;
+            height: 40px;
+            background-color: #f1f1f1;
+            text-align: center;
+            line-height: 40px;
+            font-size: 16px;
+            font-weight: bold;
+            border: 1px solid #ccc;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <span style="font-size: 1.3em; font-weight: bold;">Full Python Code</span><br><br>
+
+    <span style="color: #0000FF;">import</span> numpy as np<br>
+    <span style="color: #0000FF;">import</span> matplotlib.pyplot as plt<br>
+    <span style="color: #0000FF;">import</span> pandas as pd<br>
+    <span style="color: #0000FF;">import</span> cv2<br><br>
+
+    <span style="color: #808080;"># Read the data file</span><br>
+    data = pd.read_csv(<span style="color: #008000;">"bnb/air.csv"</span>)<br><br>
+
+    <span style="color: #808080;"># Remove rows with price = 0 and price > 8000</span><br>
+    data = data[(data['price'] < <span style="color: #0000FF;">0</span>) & (data['price'] <= <span style="color: #0000FF;">8000</span>)]<br><br>
+
+    <span style="color: #0000FF;">def</span> general(data):<br>
+    <span style="color: #808080;"># General information</span><br>
+    print(<span style="color: #008000;">"General information"</span>)<br><br>
+
+    <span style="color: #0000FF;">def</span> plot_distribution(data):<br>
+    <span style="color: #808080;"># Count the occurrences of each room type</span><br>
+    room_type_counts = data['room_type'].value_counts()<br>
+    <span style="color: #808080;"># If there are more than 9 room types, combine the rest into a single category</span><br>
+    <span style="color: #0000FF;">if</span> len(room_type_counts) > <span style="color: #0000FF;">9</span>:<br>
+    top_9_room_types = room_type_counts[:<span style="color: #0000FF;">9</span>]<br>
+    rest_count = room_type_counts[<span style="color: #0000FF;">9</span>:].sum()<br>
+    top_9_room_types['Rest'] = rest_count<br>
+    room_type_counts = top_9_room_types<br><br>
+
+    <span style="color: #808080;"># Plot a pie chart for room type distribution</span><br>
+    plt.figure(figsize=(<span style="color: #0000FF;">16</span>, <span style="color: #0000FF;">6</span>))<br>
+    plt.subplot(<span style="color: #0000FF;">1</span>, <span style="color: #0000FF;">2</span>, <span style="color: #0000FF;">1</span>)<br>
+    plt.pie(room_type_counts, labels=room_type_counts.index,<br>
+    autopct=<span style="color: #0000FF;">lambda</span> pct: f'{pct:.<span style="color: #0000FF;">1</span>f}% (<span style="color: #0000FF;">int</span>(pct / <span style="color: #0000FF;">100</span> * sum(room_type_counts))))', startangle=<span style="color: #0000FF;">140</span>)<br>
+    plt.title('Room Type Distribution')<br>
+    plt.axis('equal')  <span style="color: #808080;"># Equal aspect ratio ensures that pie is drawn as a circle.</span><br><br>
+
+    <span style="color: #808080;"># Calculate average price for each unique room type</span><br>
+    avg_price_room_type = data.groupby('room_type')['price'].mean()<br><br>
+
+    plt.subplot(<span style="color: #0000FF;">1</span>, <span style="color: #0000FF;">2</span>, <span style="color: #0000FF;">2</span>)<br>
+    avg_price_room_type.plot(kind='bar', color='skyblue')<br>
+    plt.title('Average Price by Room Type')<br>
+    plt.xlabel('Room Type')<br>
+    plt.ylabel('Average Price')<br><br>
+
+    <span style="color: #808080;"># Display actual price on each block</span><br>
+    <span style="color: #0000FF;">for</span> index, value <span style="color: #0000FF;">in</span> enumerate(avg_price_room_type):<br>
+    plt.text(index, value + 2, f"${value:.2f}", ha='center', va='bottom')<br><br>
+
+    plt.xticks(rotation=<span style="color: #0000FF;">45</span>, ha='right')<br>
+    plt.tight_layout()<br>
+    plt.show()<br>
+
+    <span style="color: #808080;"># Calculate average price for each unique neighbourhood_group</span><br>
+    avg_price_neighbourhood_group = data.groupby('neighbourhood_group')['price'].mean()<br><br>
+
+    <span style="color: #808080;"># Plot a pie chart for neighbourhood_group distribution along with average price</span><br>
+    plt.figure(figsize=(<span style="color: #0000FF;">16</span>, <span style="color: #0000FF;">6</span>))<br>
+    plt.subplot(<span style="color: #0000FF;">1</span>, <span style="color: #0000FF;">2</span>, <span style="color: #0000FF;">1</span>)<br>
+    plt.pie(data['neighbourhood_group'].value_counts(), labels=data['neighbourhood_group'].value_counts().index,<br>
+    autopct='<span style="color: #008000;">%<span style="color: #0000FF;">1.1f</span>%%</span>', startangle=<span style="color: #0000FF;">140</span>)<br>
+    plt.title('Neighbourhood Group Distribution')<br>
+    plt.axis('equal')  <span style="color: #808080;"># Equal aspect ratio ensures that pie is drawn as a circle.</span><br><br>
+
+    plt.subplot(<span style="color: #0000FF;">1</span>, <span style="color: #0000FF;">2</span>, <span style="color: #0000FF;">2</span>)<br>
+    avg_price_neighbourhood_group.plot(kind='bar', color='skyblue')<br>
+    plt.title('Average Price by Neighbourhood Group')<br>
+    plt.xlabel('Neighbourhood Group')<br>
+    plt.ylabel('Average Price')<br><br>
+
+    <span style="color: #808080;"># Display actual price on each block</span><br>
+    <span style="color: #0000FF;">for</span> index, value <span style="color: #0000FF;">in</span> enumerate(avg_price_neighbourhood_group):<br>
+    plt.text(index, value + 2, f"${value:.2f}", ha='center', va='bottom')<br><br>
+
+    plt.xticks(rotation=<span style="color: #0000FF;">45</span>, ha='right')<br>
+    plt.tight_layout()<br>
+    plt.show()<br><br>
+
+    <span style="color: #808080;"># Count the occurrences of each neighbourhood</span><br>
+    neighbourhood_counts = data['neighbourhood'].value_counts().head(10)<br><br>
+
+    <span style="color: #808080;"># If there are more than 9 neighbourhoods, combine the rest into a single category</span><br>
+    <span style="color: #0000FF;">if</span> len(neighbourhood_counts) > 9:<br>
+    top_9_neighbourhoods = neighbourhood_counts[:<span style="color: #0000FF;">9</span>]<br>
+    rest_count = neighbourhood_counts[<span style="color: #0000FF;">9</span>:].sum()<br>
+    top_9_neighbourhoods['Rest'] = rest_count<br>
+    neighbourhood_counts = top_9_neighbourhoods<br><br>
+
+    <span style="color: #808080;"># Plot a pie chart for neighbourhood distribution</span><br>
+    plt.figure(figsize=(<span style="color: #0000FF;">16</span>, <span style="color: #0000FF;">6</span>))<br>
+    plt.subplot(<span style="color: #0000FF;">1</span>, <span style="color: #0000FF;">2</span>, <span style="color: #0000FF;">1</span>)<br>
+    plt.pie(neighbourhood_counts, labels=neighbourhood_counts.index, autopct='<span style="color: #008000;">%<span style="color: #0000FF;">1.1f</span>%%</span>', startangle=<span style="color: #0000FF;">140</span>)<br>
+    plt.title('Neighbourhood Distribution')<br>
+    plt.axis('equal')  <span style="color: #808080;"># Equal aspect ratio ensures that pie is drawn as a circle.</span><br><br>
+
+    <span style="color: #808080;"># Calculate average price by neighbourhood</span><br>
+    avg_price_neighbourhood = data.groupby('neighbourhood')['price'].mean().head(10)<br><br>
+
+    plt.subplot(<span style="color: #0000FF;">1</span>, <span style="color: #0000FF;">2</span>, <span style="color: #0000FF;">2</span>)<br>
+    avg_price_neighbourhood.plot(kind='bar', color='skyblue')<br>
+    plt.title('Average Price by Neighbourhood')<br>
+    plt.xlabel('Neighbourhood')<br>
+    plt.ylabel('Average Price')<br><br>
+
+    <span style="color: #808080;"># Display actual price on each block</span><br>
+    <span style="color: #0000FF;">for</span> index, value <span style="color: #0000FF;">in</span> enumerate(avg_price_neighbourhood):<br>
+    plt.text(index, value + <span style="color: #0000FF;">2</span>, f"$<span style="color: #0000FF;">{value:.2f}</span>", ha='center', va='bottom')<br><br>
+
+    plt.xticks(rotation=<span style="color: #0000FF;">45</span>, ha='right')<br>
+    plt.tight_layout()<br>
+    plt.show()<br><br>
+
+    <span style="color: #808080;"># Group the data by 'price' and count the number of listings for each price</span><br>
+    price_counts = data['price'].value_counts().sort_index()<br><br>
+
+    <span style="color: #808080;"># Initialize variables for grouping</span><br>
+    group_ranges = []<br>
+    current_min = price_counts.index.min()<br><br>
+
+    <span style="color: #808080;"># Incrementally add 100 to the minimum price until reaching $2000</span><br>
+    <span style="color: #0000FF;">while</span> current_min < <span style="color: #0000FF;">2000</span>:<br>
+    group_ranges.append((current_min, current_min + <span style="color: #0000FF;">100</span>))<br>
+    current_min += <span style="color: #0000FF;">100</span><br><br>
+
+    <span style="color: #808080;"># Group prices into ranges</span><br>
+    price_groups = {}<br>
+    <span style="color: #0000FF;">for</span> range_min, range_max <span style="color: #0000FF;">in</span> group_ranges:<br>
+    price_group_count = price_counts.loc[range_min:range_max].sum()<br>
+    price_groups[f"$<span style="color: #0000FF;">{range_min}</span>-<span style="color: #0000FF;">{range_max}</span>"] = price_group_count<br><br>
+
+    <span style="color: #808080;"># Group all prices beyond $2000</span><br>
+    price_group_count = price_counts.loc[<span style="color: #0000FF;">2000</span>:].sum()<br>
+    price_groups['+$<span style="color: #0000FF;">2000</span>'] = price_group_count<br><br>
+
+    <span style="color: #808080;"># Plot the line graph for price distribution after all other plots</span><br>
+    plt.figure(figsize=(<span style="color: #0000FF;">10</span>, <span style="color: #0000FF;">6</span>))<br>
+    plt.plot(price_groups.keys(), price_groups.values(), marker='o', linestyle='-')<br>
+    plt.xlabel('Price Range')<br>
+    plt.ylabel('Number of Listings')<br>
+    plt.title('Overall Price Distribution')<br>
+    plt.xticks(rotation=<span style="color: #0000FF;">45</span>, ha='right')<br>
+    plt.grid(True)  <span style="color: #808080;"># Add gridlines</span><br><br>
+
+    <span style="color: #808080;"># Annotate each point with its count</span><br>
+    <span style="color: #0000FF;">for</span> range_label, count <span style="color: #0000FF;">in</span> price_groups.items():<br>
+    plt.text(range_label, count, str(count), ha='center', va='bottom')<br><br>
+
+    plt.tight_layout()<br>
+    plt.show()<br><br>
+
+    <span style="color: #0000FF;">def</span> stats(data):<br><br>
+
+    <span style="color: #808080;"># Display the number of elements</span><br>
+    num_elements = len(data)<br>
+    print("Number of elements:", num_elements)<br><br>
+
+    <span style="color: #808080;"># Display the number of different hosts</span><br>
+    num_unique_hosts = data['host_id'].nunique()<br>
+    print("Number of different hosts:", num_unique_hosts)<br>
+    total_price = data['price'].sum()<br><br>
+
+    <span style="color: #808080;"># Calculate the average price per listing</span><br>
+    average_price = total_price / num_elements<br>
+    print("Average price per listing:", average_price)<br><br>
+
+    <span style="color: #808080;"># Calculate the average number of reviews</span><br>
+    average_reviews = data['number_of_reviews'].mean()<br>
+    print(f"Average number of reviews: {average_reviews}")<br><br>
+
+    <span style="color: #808080;"># Calculate the total review count</span><br>
+    total_review_count = data['number_of_reviews'].sum()<br>
+    print("Total review count of the dataset:", total_review_count)<br><br>
+
+    <span style="color: #808080;"># Calculate the number of listings without reviews</span><br>
+    listings_without_reviews = len(data[data['number_of_reviews'] == 0])<br><br>
+
+    <span style="color: #808080;"># Calculate the number of listings with reviews</span><br>
+    listings_with_reviews = len(data[data['number_of_reviews'] > 0])<br><br>
+
+    print("Number of listings without reviews:", listings_without_reviews)<br>
+    print("Number of listings with reviews:", listings_with_reviews)<br><br>
+
+    <span style="color: #808080;"># Calculate the average price for listings without reviews</span><br>
+    average_price_without_reviews = data[data['number_of_reviews'] == 0]['price'].mean()<br>
+    print("Average price for listings without reviews:", average_price_without_reviews)<br><br>
+
+    <span style="color: #808080;"># Calculate the average price for listings with reviews</span><br>
+    average_price_with_reviews = data[data['number_of_reviews'] > 0]['price'].mean()<br>
+    print("Average price for listings with reviews:", average_price_with_reviews)<br><br>
+
+    <span style="color: #808080;"># Separate listings into those with and without reviews</span><br>
+    listings_without_reviews = data[data['number_of_reviews'] == 0]<br>
+    listings_with_reviews = data[data['number_of_reviews'] > 0]<br><br>
+
+    <span style="color: #808080;"># Create subplots</span><br>
+    fig, axs = plt.subplots(1, 2, figsize=(15, 6))<br><br>
+
+    <span style="color: #808080;"># Plot for listings without reviews</span><br>
+    axs[0].scatter(listings_without_reviews['id'], listings_without_reviews['price'], color='blue', alpha=0.5)<br>
+    axs[0].set_title('Price of Listings Without Review')<br>
+    axs[0].set_xlabel('ID')<br>
+    axs[0].set_ylabel('Price ($)')<br>
+    axs[0].grid(True)<br><br>
+
+    <span style="color: #808080;"># Plot for listings with reviews</span><br>
+    axs[1].scatter(listings_with_reviews['id'], listings_with_reviews['price'], color='green', alpha=0.5)<br>
+    axs[1].set_title('Price of Listings With Review')<br>
+    axs[1].set_xlabel('ID')<br>
+    axs[1].set_ylabel('Price ($)')<br>
+    axs[1].grid(True)<br><br>
+
+    <span style="color: #808080;"># Adjust layout</span><br>
+    plt.tight_layout()<br>
+    plt.show()<br><br>
+
+    print("-" * 100)<br><br>
+
+    <span style="color: #808080;"># Filter the dataset for listings in Manhattan</span><br>
+    manhattan_listings = data[data['neighbourhood_group'] == 'Manhattan']<br><br>
+
+    <span style="color: #808080;"># Calculate the average price for listings in Manhattan</span><br>
+    average_price_manhattan = manhattan_listings['price'].mean()<br><br>
+
+    print("Average price for listings in Manhattan:", average_price_manhattan)<br><br>
+
+    <span style="color: #808080;"># Filter the dataset for listings with room type "Entire Home"</span><br>
+    entire_home_listings = data[data['room_type'] == 'Entire home/apt']<br><br>
+
+    <span style="color: #808080;"># Calculate the average price for listings with room type "Entire Home"</span><br>
+    average_price_entire_home = entire_home_listings['price'].mean()<br><br>
+
+    print("Average price for listings with room type 'Entire Home':", average_price_entire_home)<br><br>
+
+    <span style="color: #808080;"># Filter the dataset for listings in Manhattan with room type "Entire Home/Apt"</span><br>
+    manhattan_entire_home_listings = manhattan_listings[manhattan_listings['room_type'] == 'Entire home/apt']<br><br>
+
+    <span style="color: #808080;"># Calculate the average price for whole houses in Manhattan</span><br>
+    average_price_whole_houses_manhattan = manhattan_entire_home_listings['price'].mean()<br><br>
+
+    print("Average price for whole houses in Manhattan:", average_price_whole_houses_manhattan)<br><br>
+
+    print("-" * 100)<br><br>
+
+    <span style="color: #808080;"># Display neighbourhood_group and count of listings in each group</span><br>
+    neighbourhood_group_stats = data['neighbourhood_group'].value_counts()<br>
+    print("\nNeighbourhood Group Distribution:")<br>
+    print(neighbourhood_group_stats)<br><br>
+
+    <span style="color: #808080;"># Calculate average price for each neighbourhood group</span><br>
+    avg_price_neighbourhood_group = data.groupby('neighbourhood_group')['price'].mean()<br><br>
+
+    <span style="color: #808080;"># Create a DataFrame to hold counts and average prices for neighbourhood groups</span><br>
+    neighbourhood_group_stats_df = pd.DataFrame({<br>
+    'Neighbourhood_Group': avg_price_neighbourhood_group.index,<br>
+    'Average_Price': avg_price_neighbourhood_group.values,<br>
+    'Count': neighbourhood_group_stats[avg_price_neighbourhood_group.index].values})<br><br>
+
+    <span style="color: #808080;"># Sort the DataFrame by the count of listings in each neighbourhood group</span><br>
+    neighbourhood_group_stats_df = neighbourhood_group_stats_df.sort_values(by='Count', ascending=False)<br><br>
+
+    print("\nAverage Price for Each Neighbourhood Group:")<br>
+    <span style="color: #0000FF;">for</span> index, row <span style="color: #0000FF;">in</span> neighbourhood_group_stats_df.iterrows():<br>
+    print(f"{row['Neighbourhood_Group']}: ${row['Average_Price']:.2f}")<br><br>
+
+    <span style="color: #808080;"># Display the neighbourhood group with the maximum price</span><br>
+    max_price_neighbourhood_group = avg_price_neighbourhood_group.idxmax()<br>
+    max_price_neighbourhood_group_price = avg_price_neighbourhood_group.max()<br>
+    print("\nNeighbourhood Group with Maximum Price:")<br>
+    print("Neighbourhood Group:", max_price_neighbourhood_group)<br>
+    print("Average Price: ${:.2f}".format(max_price_neighbourhood_group_price))<br><br>
+
+    <span style="color: #808080;"># Display the neighbourhood group with the minimum price</span><br>
+    min_price_neighbourhood_group = avg_price_neighbourhood_group.idxmin()<br>
+    min_price_neighbourhood_group_price = avg_price_neighbourhood_group.min()<br>
+    print("\nNeighbourhood Group with Minimum Price:")<br>
+    print("Neighbourhood Group:", min_price_neighbourhood_group)<br>
+    print("Average Price: ${:.2f}".format(min_price_neighbourhood_group_price))<br><br>
+
+    <span style="color: #808080;"># Calculate correlation coefficient between count and price</span><br>
+    correlation_coefficient = neighbourhood_group_stats_df['Count'].corr(<br>
+    neighbourhood_group_stats_df['Average_Price'])<br>
+    print("\nCorrelation Coefficient between Count and Average Price:", correlation_coefficient)<br><br>
+
+    print("-" * 100)<br><br>
+
+    <span style="color: #808080;"># Display neighbourhood and count of listings in each neighbourhood</span><br>
+    neighbourhood_counts = data['neighbourhood'].value_counts().head(10)<br>
+    print("\nNeighbourhood Distribution:")<br>
+    <span style="color: #0000FF;">for</span> neighbourhood, count <span style="color: #0000FF;">in</span> neighbourhood_counts.items():<br>
+    print(f"{neighbourhood}: {count}")<br><br>
+
+    <span style="color: #808080;"># Calculate average price for each neighbourhood within the top 10 most listed neighbourhoods</span><br>
+    avg_price_neighbourhood_top_10 = <br>
+    data[data['neighbourhood'].isin(neighbourhood_counts.index)].groupby('neighbourhood')['price'].mean()<br><br>
+
+    <span style="color: #808080;"># Create a DataFrame to hold counts and average prices</span><br>
+    neighbourhood_stats = pd.DataFrame({<br>
+    'Neighbourhood': avg_price_neighbourhood_top_10.index,<br>
+    'Average_Price': avg_price_neighbourhood_top_10.values,<br>
+    'Count': neighbourhood_counts[avg_price_neighbourhood_top_10.index].values})<br><br>
+
+    <span style="color: #808080;"># Sort the DataFrame by the count of listings in each neighbourhood</span><br>
+    neighbourhood_stats = neighbourhood_stats.sort_values(by='Count', ascending=False)<br><br>
+
+    print("\nAverage Price for Each Neighbourhood:")<br>
+    <span style="color: #0000FF;">for</span> index, row <span style="color: #0000FF;">in</span> neighbourhood_stats.iterrows():<br>
+    print(f"{row['Neighbourhood']}: ${row['Average_Price']:.2f}")<br><br>
+
+    <span style="color: #808080;"># Display the neighbourhood group with the maximum price</span><br>
+    max_price_avg_price_neighbourhood_top_10 = avg_price_neighbourhood_top_10.idxmax()<br>
+    max_price_avg_price_neighbourhood_top_10_price = avg_price_neighbourhood_top_10.max()<br>
+    print("\nNeighbourhood with Maximum Price:")<br>
+    print("Neighbourhood:", max_price_avg_price_neighbourhood_top_10)<br>
+    print("Average Price: ${:.2f}".format(max_price_avg_price_neighbourhood_top_10_price))<br><br>
+
+    <span style="color: #808080;"># Display the neighbourhood group with the minimum price</span><br>
+    min_price_avg_price_neighbourhood_top_10 = avg_price_neighbourhood_top_10.idxmin()<br>
+    min_price_avg_price_neighbourhood_top_10_price = avg_price_neighbourhood_top_10.min()<br>
+    print("\nNeighbourhood with Minimum Price:")<br>
+    print("Neighbourhood:", min_price_avg_price_neighbourhood_top_10)<br>
+    print("Average Price: ${:.2f}".format(min_price_avg_price_neighbourhood_top_10_price))<br>
+    print("-" * 100)<br><br>
+
+    <span style="color: #808080;"># Display room_type and count of listings for each room type</span><br>
+    room_type_stats = data['room_type'].value_counts()<br>
+    print("\nRoom Type Distribution:")<br>
+    <span style="color: #0000FF;">for</span> room_type, count <span style="color: #0000FF;">in</span> room_type_stats.items():<br>
+    print(f"{room_type}: {count}")<br><br>
+
+    <span style="color: #808080;"># Calculate average price for each room type</span><br>
+    avg_price_room_type = data.groupby('room_type')['price'].mean()<br>
+    print("\nAverage Price for Each Room Type:")<br>
+    <span style="color: #0000FF;">for</span> room_type, price <span style="color: #0000FF;">in</span> avg_price_room_type.items():<br>
+    print(f"{room_type}: ${price:.2f}")<br>
+    print("-" * 100)<br><br>
+
+    <span style="color: #808080;"># Display the item with the minimum price</span><br>
+    min_price_item = data.loc[data['price'].idxmin()]<br>
+    print("\nItem with Minimum Price:")<br>
+    min_price_item_filtered = min_price_item.drop(<br>
+    ['last_review', 'reviews_per_month', 'calculated_host_listings_count', 'availability_365'])<br>
+    print(min_price_item_filtered)<br><br>
+
+    <span style="color: #808080;"># Display the item with the maximum price</span><br>
+    max_price_item = data.loc[data['price'].idxmax()]<br>
+    print("\nItem with Maximum Price:")<br>
+    max_price_item_filtered = max_price_item.drop(<br>
+    ['last_review', 'reviews_per_month', 'calculated_host_listings_count', 'availability_365'])<br>
+    print(max_price_item_filtered)<br>
+    print("-" * 100)<br><br>
+
+    <span style="color: #808080;"># Group the data by 'host_id' and sum the 'number_of_reviews' for each group</span><br>
+    host_reviews_sum = data.groupby('host_id').agg(<br>
+    {'number_of_reviews': 'sum', 'host_name': 'first', 'id': 'count'})<br><br>
+
+    <span style="color: #808080;"># Find the host_id with the maximum sum of reviews</span><br>
+    max_reviews_host_id = host_reviews_sum['number_of_reviews'].idxmax()<br><br>
+
+    <span style="color: #808080;"># Get the maximum number of reviews</span><br>
+    max_reviews_count = host_reviews_sum['number_of_reviews'].max()<br><br>
+
+    <span style="color: #808080;"># Get the name of the host with the maximum sum of reviews</span><br>
+    max_reviews_host_name = host_reviews_sum.loc[max_reviews_host_id, 'host_name']<br><br>
+
+    <span style="color: #808080;"># Get the number of items the host with the maximum sum of reviews has</span><br>
+    max_reviews_host_items = host_reviews_sum.loc[max_reviews_host_id, 'id']<br><br>
+
+    <span style="color: #808080;"># Print the host_id, name, and number of items for the host with the maximum sum of reviews</span><br>
+    print("Host with the Maximum Reviews")<br>
+    print("host_id", " " * 20, max_reviews_host_id)<br>
+    print("name", " " * 27, max_reviews_host_name)<br>
+    print("number_of_reviews", " " * 14, max_reviews_count)<br>
+    print("Number_of_items", " " * 19, max_reviews_host_items)<br>
+    print("-" * 100)<br><br>
+
+    <span style="color: #808080;"># Display the item with the most reviews</span><br>
+    most_reviews_item = data.loc[data['number_of_reviews'].idxmax()]<br>
+    print("\nItem with Most Reviews:")<br>
+    most_reviews_item_filtered = most_reviews_item.drop(<br>
+    ['last_review', 'reviews_per_month', 'calculated_host_listings_count', 'availability_365'])<br>
+    print(most_reviews_item_filtered)<br><br>
+
+    <span style="color: #808080;"># Call the functions to plot the distributions and display statistics</span><br>
+    plot_distribution(data)<br>
+    stats(data)<br><br>
+
+    print("\nGeneral information delivered.")<br>
+    print("-"*100)<br><br>
+
+    general(data)<br><br>
+
+    <span style="color: #808080;">def cluster(data):</span><br>
+    <span style="color: #808080;"># Group the data by host_id and count occurrences</span><br>
+    host_id_counts = data['host_id'].value_counts()<br><br>
+
+    <span style="color: #808080;"># Filter for host_ids that repeat</span><br>
+    repeating_host_ids = host_id_counts[host_id_counts > 1]<br><br>
+
+    <span style="color: #808080;"># Create a list to store tuples of host_id, host_name, and the number of repetitions</span><br>
+    host_info_list = []<br>
+    <span style="color: #0000FF;">for</span> host_id, count <span style="color: #0000FF;">in</span> repeating_host_ids.items():<br>
+    host_name = data[data['host_id'] == host_id]['host_name'].iloc[0]<br>
+    host_info_list.append((host_id, host_name, count))<br><br>
+
+    <span style="color: #808080;"># Sort the host_info_list based on the count of repetitions and get the top 3 hosts</span><br>
+    top_3_hosts = sorted(host_info_list, key=lambda x: x[2], reverse=True)[:3]<br><br>
+
+    return data, top_3_hosts<br><br>
+
+    data_clustered, top_3_hosts = cluster(data)<br><br>
+
+    <span style="color: #808080;">def map_drawer(data_clustered,top_3_hosts):</span><br>
+    print("-" * 100)<br>
+    print("Maps for top 3 hosts\n")<br>
+    top_3_host_ids = [host[0] <span style="color: #0000FF;">for</span> host <span style="color: #0000FF;">in</span> top_3_hosts]<br><br>
+
+    <span style="color: #808080;"># Create an empty list to store the data for the top 3 hosts</span><br>
+    top_3_person_data_map = []<br><br>
+
+    <span style="color: #808080;"># Loop through the top 3 host IDs</span><br>
+    <span style="color: #0000FF;">for</span> host_id <span style="color: #0000FF;">in</span> top_3_host_ids:<br>
+    person_data_map = data[data['host_id'] == host_id]<br>
+    person_data_map = person_data_map[<br>
+    ['host_id', 'latitude', 'longitude']]<br><br>
+
+    <span style="color: #808080;"># Append the data to the list</span><br>
+    top_3_person_data_map.append(person_data_map)<br><br>
+
+    <span style="color: #808080;"># Create a dictionary to map each host ID to its list of coordinates</span><br>
+    host_coordinates_map = {}<br><br>
+
+    <span style="color: #808080;"># Loop through each DataFrame in top_3_person_data</span><br>
+    <span style="color: #0000FF;">for</span> person_data_map <span style="color: #0000FF;">in</span> top_3_person_data_map:<br>
+    host_id = person_data_map['host_id'].iloc[0]<br><br>
+
+    <span style="color: #808080;"># Get latitude and longitude values for the current host</span><br>
+    latitudes = person_data_map['latitude'].tolist()<br>
+    longitudes = person_data_map['longitude'].tolist()<br><br>
+
+    <span style="color: #808080;"># Combine latitude and longitude into tuples</span><br>
+    coordinates = list(zip(longitudes, latitudes))<br><br>
+
+    <span style="color: #808080;"># Add coordinates to the dictionary</span><br>
+    <span style="color: #0000FF;">if</span> host_id <span style="color: #0000FF;">not in</span> host_coordinates_map:<br>
+    host_coordinates_map[host_id] = coordinates<br>
+    <span style="color: #0000FF;">else</span>:<br>
+    host_coordinates_map[host_id].extend(coordinates)<br><br>
+
+    <span style="color: #808080;"># Print or use these lists as needed</span><br>
+    <span style="color: #0000FF;">for</span> host_id, coordinates <span style="color: #0000FF;">in</span> host_coordinates_map.items():<br>
+    print(f"Host {host_id} Coordinates:", coordinates)<br>
+    print(len(coordinates))<br><br>
+
+    <span style="color: #808080;"># Read the image</span><br>
+    image = cv2.imread(<span style="color: #008000;">'newyork/ny.png'</span>, cv2.IMREAD_COLOR)<br>
+    image_with_dots = image.copy()<br><br>
+
+    <span style="color: #808080;"># Get the dimensions of the image</span><br>
+    height_red, width_red, _ = image.shape<br>
+    center_x_red = width_red // 2<br>
+    center_y_red = height_red // 2<br>
+    dot_x = center_x_red + 148<br>
+    dot_y = center_y_red + 390<br>
+    red = (<span style="color: #FF0000;">0</span>, <span style="color: #FF0000;">0</span>, <span style="color: #FF0000;">255</span>)<br>
+    <span style="color: #808080;"># Draw a red dot at the calculated position</span><br>
+    cv2.circle(image, (dot_x, dot_y), 5, red, -1)<br><br>
+
+    coordinates_red = (<span style="color: #008000;">-73.9004905</span>, <span style="color: #008000;">40.5757</span>, dot_x, dot_y)<br><br>
+
+    <span style="color: #808080;"># Get the dimensions of the image</span><br>
+    height_green, width_green, _ = image.shape<br>
+    center_x_green = width_green // 2<br>
+    center_y_green = height_green // 2<br>
+    dot_x_green = center_x_green - 58<br>
+    dot_y_green = center_y_green - 260<br>
+    green = (<span style="color: #00FF00;">0</span>, <span style="color: #00FF00;">255</span>, <span style="color: #00FF00;">0</span>)  <span style="color: #808080;"># OpenCV uses BGR instead of RGB</span><br>
+    <span style="color: #808080;"># Draw a blue dot at the calculated position</span><br>
+    cv2.circle(image, (dot_x_green, dot_y_green), 5, green, -1)<br>
+    coordinates_green = (<span style="color: #008000;">-73.996798</span>, <span style="color: #008000;">40.791336</span>, dot_x_green, dot_y_green)<br><br>
+    <span style="color: #808080;"># Get the dimensions of the image</span><br>
+    height_purple, width_purple, _ = image.shape<br>
+    center_x_purple = width_purple // 2<br>
+    center_y_purple = height_green // 2<br>
+    dot_x_purple = center_x_purple - 58<br>
+    dot_y_purple = center_y_purple + 390<br>
+    purple = (<span style="color: #800080;">255</span>, <span style="color: #800080;">0</span>, <span style="color: #800080;">255</span>)  <span style="color: #808080;"># OpenCV uses BGR instead of RGB</span><br>
+    <span style="color: #808080;"># Draw a purple dot at the calculated position</span><br>
+    cv2.circle(image, (dot_x_purple, dot_y_purple), 5, purple, -1)<br>
+    coordinates_purple = (<span style="color: #008000;">-73.996798</span>, <span style="color: #008000;">40.5757</span>, dot_x_purple, dot_y_purple)<br><br>
+
+    purple_y_minus_green_y_image = coordinates_purple[3] - coordinates_green[3]<br>
+    purple_y_minus_green_y_reel = coordinates_purple[1] - coordinates_green[1]<br>
+    scale_heigth = purple_y_minus_green_y_reel / purple_y_minus_green_y_image<br><br>
+
+    purple_y_minus_red_y_image = coordinates_red[2] - coordinates_purple[2]<br>
+    purple_y_minus_red_y_reel = coordinates_purple[0] - coordinates_red[0]<br>
+    scale_width = purple_y_minus_red_y_reel / purple_y_minus_red_y_image<br><br>
+
+    <span style="color: #808080;"># Function to scale the width based on coordinates</span><br>
+    <span style="color: #0000FF;">def</span> scaler_width(coordinates_purple, coordinates_red, target_width):<br>
+    a = coordinates_purple[0] - coordinates_red[0]<br>
+    b = target_width - coordinates_red[0]<br>
+    c = coordinates_purple[2] - coordinates_red[2]<br>
+    d = (a / b) / c<br>
+    e = 1 / d<br>
+    result = e + coordinates_red[2]<br>
+    <span style="color: #0000FF;">return</span> result<br><br>
+    <span style="color: #808080;"># Function to scale the height based on coordinates</span><br>
+    <span style="color: #0000FF;">def</span> scaler_height(coordinates_green, coordinates_purple, target_height):<br>
+    x = coordinates_green[1] - coordinates_purple[1]<br>
+    y = target_height - coordinates_purple[1]<br>
+    z = coordinates_green[3] - coordinates_purple[3]<br>
+    d = (x / y) / z<br>
+    q = 1 / d<br>
+    result = q + coordinates_purple[3]<br>
+    <span style="color: #0000FF;">return</span> result<br><br>
+
+    <span style="color: #808080;"># Iterate over host_coordinates_map</span><br>
+    <span style="color: #0000FF;">for</span> host_id, coordinates <span style="color: #0000FF;">in</span> host_coordinates_map.items():<br>
+    image_with_dots_copy = image_with_dots.copy()<br>
+    host_name = data[data['host_id'] == host_id]['host_name'].iloc[0]<br><br>
+
+    <span style="color: #808080;"># Plot the coordinates on the map</span><br>
+    <span style="color: #0000FF;">for</span> coord <span style="color: #0000FF;">in</span> coordinates:<br>
+    dot_x = <span style="color: #0000FF;">int</span>(scaler_width(coordinates_purple, coordinates_red, coord[0]))<br>
+    dot_y = <span style="color: #0000FF;">int</span>(scaler_height(coordinates_green, coordinates_purple, coord[1]))<br><br>
+
+    <span style="color: #808080;"># Draw the smaller dot on the map</span><br>
+    cv2.circle(image_with_dots_copy, (dot_x, dot_y), 3, (<span style="color: #0000FF;">255</span>, <span style="color: #0000FF;">0</span>, <span style="color: #0000FF;">0</span>), -1)  <span style="color: #808080;"># Blue dot</span><br><br>
+
+    <span style="color: #808080;"># Display the map with smaller dots</span><br>
+    cv2.imshow(f"Map for Host {host_name}", image_with_dots_copy)<br>
+    cv2.waitKey(0)<br>
+    cv2.destroyAllWindows()<br><br>
+
+    print(<span style="color: #008000;">"Maps have been drawn."</span>)<br>
+    print(<span style="color: #008000;">"-" * 100</span>)<br><br>
+
+    map_drawer(data_clustered, top_3_hosts)<br><br>
+
+    <span style="color: #808080;"># Function to analyze top hosts</span><br>
+    <span style="color: #0000FF;">def</span> analyze_top_hosts(data):<br>
+    print(<span style="color: #008000;">"-" * 100</span>)<br>
+    print(<span style="color: #008000;">"Top Hosts"</span>)<br><br>
+
+    <span style="color: #808080;"># Call the function to cluster the data</span><br>
+    data_clustered, top_3_hosts = cluster(data)<br><br>
+
+    <span style="color: #808080;"># Get the host IDs of the top 3 hosts</span><br>
+    top_3_host_ids = [host[0] <span style="color: #0000FF;">for</span> host <span style="color: #0000FF;">in</span> top_3_hosts]<br><br>
+
+    <span style="color: #808080;"># Create an empty list to store the data for the top 3 hosts</span><br>
+    top_3_person_data = []<br><br>
+
+    <span style="color: #808080;"># Loop through the top 3 host IDs</span><br>
+    <span style="color: #0000FF;">for</span> host_id <span style="color: #0000FF;">in</span> top_3_host_ids:<br>
+    person_data = data[data['host_id'] == host_id]<br>
+    top_3_person_data.append(person_data)<br><br>
+
+    <span style="color: #808080;"># Function to plot distributions of room types</span><br>
+    <span style="color: #0000FF;">def</span> plot_distributions(person_data, person_name):<br>
+    <span style="color: #808080;"># Plot room type distribution</span><br>
+    room_type_counts = person_data['room_type'].value_counts()<br>
+    <span style="color: #0000FF;">if</span> len(room_type_counts) > 9:<br>
+    top_9_room_types = room_type_counts[:9]<br>
+    rest_count = room_type_counts[9:].sum()<br>
+    top_9_room_types['Rest'] = rest_count<br>
+    room_type_counts = top_9_room_types<br>
+    plt.figure(figsize=(8, 6))<br>
+    plt.pie(room_type_counts, labels=room_type_counts.index,<br>
+    autopct=lambda pct: f'{pct:.1f}% ({<span style="color: #0000FF;">int</span>(pct / 100 * sum(room_type_counts))})', startangle=140)<br>
+    plt.title(f'Room Type Distribution for {person_name}')<br>
+    plt.axis('equal')<br>
+    plt.show()<br><br>
+
+    <span style="color: #808080;"># Plot neighbourhood distribution</span><br>
+    neighbourhood_counts = person_data['neighbourhood'].value_counts().head(10)<br>
+    <span style="color: #0000FF;">if</span> len(neighbourhood_counts) > 9:<br>
+    top_9_neighbourhoods = neighbourhood_counts[:9]<br>
+    rest_count = neighbourhood_counts[9:].sum()<br>
+    top_9_neighbourhoods['Rest'] = rest_count<br>
+    neighbourhood_counts = top_9_neighbourhoods<br>
+    plt.figure(figsize=(8, 6))<br>
+    plt.pie(neighbourhood_counts, labels=neighbourhood_counts.index, autopct='%1.1f%%', startangle=140)<br>
+    plt.title(f'Neighbourhood Distribution for {person_name}')<br>
+    plt.axis('equal')<br>
+    plt.show()<br><br>
+
+    <span style="color: #808080;"># Plot neighbourhood group distribution</span><br>
+    neighbourhood_group_counts = person_data['neighbourhood_group'].value_counts()<br>
+    <span style="color: #0000FF;">if</span> len(neighbourhood_group_counts) > 9:<br>
+    top_9_neighbourhood_groups = neighbourhood_group_counts[:9]<br>
+    rest_count = neighbourhood_group_counts[9:].sum()<br>
+    top_9_neighbourhood_groups['Rest'] = rest_count<br>
+    neighbourhood_group_counts = top_9_neighbourhood_groups<br>
+    plt.figure(figsize=(8, 6))<br>
+    plt.pie(neighbourhood_group_counts, labels=neighbourhood_group_counts.index, autopct='%1.1f%%', startangle=140)<br>
+    plt.title(f'Neighbourhood Group Distribution for {person_name}')<br>
+    plt.axis('equal')<br>
+    plt.show()<br><br>
+
+    <span style="color: #808080;"># Function to generate grouped ranges for price</span><br>
+    <span style="color: #0000FF;">def</span> generate_group_ranges(min_price, max_price):<br>
+    group_ranges = []<br>
+    current_min = min_price<br>
+    <span style="color: #0000FF;">while</span> current_min < max_price:<br>
+    group_ranges.append((current_min, <span style="color: #0000FF;">min</span>(current_min + 50, max_price)))<br>
+    current_min += 50<br>
+    <span style="color: #0000FF;">return</span> group_ranges<br><br>
+
+    <span style="color: #808080;"># Function to merge adjacent zero intervals in price groups</span><br>
+    <span style="color: #0000FF;">def</span> merge_adjacent_zeros(price_groups):<br>
+    merged_groups = {}<br>
+    zero_count = 0<br>
+    <span style="color: #0000FF;">for</span> key, value <span style="color: #0000FF;">in</span> price_groups.items():<br>
+    <span style="color: #0000FF;">if</span> value != 0:<br>
+    <span style="color: #0000FF;">if</span> zero_count > 0:<br>
+    merged_groups[f"${prev_min}-{key.split('-')[1]}"] = 0<br>
+    zero_count = 0<br>
+    merged_groups[key] = value<br>
+    prev_min = key.split('-')[0][1:]<br>
+    <span style="color: #0000FF;">else</span>:<br>
+    zero_count += 1<br>
+    <span style="color: #0000FF;">if</span> zero_count > 0:<br>
+    merged_groups[f"${prev_min}-{list(price_groups.keys())[-1].split('-')[1]}"] = 0<br>
+    <span style="color: #0000FF;">return</span> merged_groups<br><br>
+
+    <span style="color: #808080;"># Plot price distribution</span><br>
+    min_price = person_data['price'].min()<br>
+    max_price = person_data['price'].max()<br><br>
+
+    <span style="color: #808080;"># Generate grouped ranges</span><br>
+    group_ranges = generate_group_ranges(min_price, max_price)<br><br>
+
+    <span style="color: #808080;"># Group prices into ranges</span><br>
+    price_groups = {}<br>
+    <span style="color: #0000FF;">for</span> range_min, range_max <span style="color: #0000FF;">in</span> group_ranges:<br>
+    price_groups[f"${range_min}-{range_max}"] = \<br>
+    person_data[(person_data['price'] >= range_min) & (person_data['price'] < range_max)].shape[0]<br><br>
+
+    <span style="color: #808080;"># Merge adjacent zero intervals in price groups</span><br>
+    price_groups = merge_adjacent_zeros(price_groups)<br><br>
+
+    <span style="color: #808080;"># Plot a line graph for price distribution</span><br>
+    plt.figure(figsize=(10, 6))<br>
+    plt.plot(price_groups.keys(), price_groups.values(), marker='o', linestyle='-')<br>
+    plt.xlabel('Price Range')<br>
+    plt.ylabel('Number of Listings')<br>
+    plt.title(f'Price Distribution for {person_name}')<br>
+    plt.xticks(rotation=45, ha='right')<br>
+    plt.grid(True)  <span style="color: #808080;"># Add gridlines</span><br><br>
+
+    <span style="color: #808080;"># Annotate each point with its count</span><br>
+    <span style="color: #0000FF;">for</span> range_label, count <span style="color: #0000FF;">in</span> price_groups.items():<br>
+    plt.text(range_label, count, str(count), ha='center', va='bottom')<br><br>
+
+    plt.tight_layout()<br>
+    plt.show()<br><br>
+
+    <span style="color: #808080;"># Function to display statistics of the top 3 hosts</span><br>
+    <span style="color: #0000FF;">def</span> top3stats():<br>
+    <span style="color: #0000FF;">for</span> i, person_data <span style="color: #0000FF;">in</span> enumerate(top_3_person_data):<br>
+    host_id = top_3_hosts[i][0]  <span style="color: #808080;"># Extract host ID</span><br>
+    person_name = top_3_hosts[i][1]  <span style="color: #808080;"># Extract person's name</span><br>
+    num_entries = len(person_data)  <span style="color: #808080;"># Number of entries for this person</span><br>
+    print(f"Host ID: {host_id}")<br>
+    print(f"Name: {person_name}")<br>
+    print(f"Number of Entries: {num_entries}")<br><br>
+    <span style="color: #808080;"># Calculate average price</span><br>
+    average_price = (person_data['price']).mean()<br>
+    print(f"Average Price: ${average_price}")<br><br>
+    <span style="color: #808080;"># Calculate total number of reviews</span><br>
+    total_reviews = person_data['number_of_reviews'].sum()<br>
+    print(f"Total Number of Reviews: {total_reviews}")<br><br>
+
+    <span style="color: #808080;"># Unique neighbourhood group names and their counts</span><br>
+    unique_neighbourhood_group = person_data['neighbourhood_group'].value_counts()<br>
+    print("\nNeighbourhood General Distribution:")<br>
+    <span style="color: #0000FF;">for</span> neighbourhood_group, count <span style="color: #0000FF;">in</span> unique_neighbourhood_group.items():<br>
+    print(f"{neighbourhood_group}: {count}")<br><br>
+
+    <span style="color: #808080;"># Unique neighbourhood names and their counts</span><br>
+    unique_neighbourhood = person_data['neighbourhood'].value_counts()<br>
+    print("\nNeighbourhood Distribution:")<br>
+    <span style="color: #0000FF;">for</span> neighbourhood, count <span style="color: #0000FF;">in</span> unique_neighbourhood.items():<br>
+    print(f"{neighbourhood}: {count}")<br><br>
+
+    <span style="color: #808080;"># Calculate total achievable price</span><br>
+    total_income = (person_data['price']).sum()<br>
+    print(f"\nIncome per day: ${total_income}")<br><br>
+
+    <span style="color: #808080;"># Find the item with the highest price</span><br>
+    highest_price_item = person_data.loc[person_data['price'].idxmax()]<br>
+    print("\nHighest Price Item:")<br>
+    print(highest_price_item)<br><br>
+
+    <span style="color: #808080;"># Find the item with the lowest price</span><br>
+    lowest_price_item = person_data.loc[person_data['price'].idxmin()]<br>
+    print("\nLowest Price Item:")<br>
+    print(lowest_price_item)<br><br>
+
+    <span style="color: #808080;"># Find the median price</span><br>
+    median_price = np.median(person_data['price'])<br><br>
+    <span style="color: #808080;"># Define the 100-interval band around the median</span><br>
+    lower_bound = int(median_price - 50)<br>
+    upper_bound = int(median_price + 50)<br>
+    interval_band = f"${lower_bound}-{upper_bound}"<br>
+    print(f"\n100-interval band around the median price ({median_price}): {interval_band}")<br><br>
+
+    print()<br>
+    print("-" * 100)<br><br>
+
+    <span style="color: #808080;"># Plot distributions for each of the top 3 persons</span><br>
+    <span style="color: #0000FF;">for</span> i, person_data <span style="color: #0000FF;">in</span> enumerate(top_3_person_data):<br>
+    person_name = top_3_hosts[i][1]<br>
+    plot_distributions(person_data, person_name)<br><br>
+
+    <span style="color: #808080;"># Call the function to print statistics for each of the top 3 hosts</span><br>
+    top3stats()<br>
+    print("Statistics of top hosts delivered.")<br>
+    print("-" * 100)<br><br>
+
+    analyze_top_hosts(data)<br><br><br><br><br><br><br>
+
+    <span style="font-size: 1.3em; font-weight: bold;">Required libraries for running the code [Free]:</span><br><br>
+    -NumPy<br>
+    -Matplotlib<br>
+    -pandas<br>
+    -OpenCV<br>
+</div>
+<div class="return-button" onclick="returnToProject()">Return to Project</div>
+
+<div class="uppertab">
+    <div class="home-button" onclick="openHome()"></div>
+    <div class="project-button" onclick="togglesettingsBox()"></div>
+    <div class="settings-box" id="settingsBox">
+        <div class="buttons" onclick="openProj1()">Project 1</div>
+        <div class="buttons" onclick="openProj2()">Project 2</div>
+        <div class="buttons" onclick="openProj3()">Project 3</div>
+    </div>
+    <div class="info-button" onclick=""></div>
+
+</div>
+
+
+<script>
+    function openProj1() {
+        window.open('Project1.html', '_blank');
+        window.close();
+    }
+    function openProj2() {
+        window.open('Project2.html', '_blank');
+        window.close();
+    }
+    function openProj3() {
+        window.open('Project3.html', '_blank');
+        window.close();
+    }
+    function openHome() {
+        window.open('index.html', '_blank');
+        window.close();
+    }
+    function returnToProject() {
+        window.open('Project2.html', '_blank');
+        window.close();
+    }
+
+    function togglesettingsBox() {
+        var settingsBox = document.getElementById('settingsBox');
+        if (settingsBox.style.display === 'none') {
+            settingsBox.style.display = 'flex';
+        } else {
+            settingsBox.style.display = 'none';
+        }
+    }
+    document.addEventListener('click', function(event) {
+        var settingsBox = document.getElementById('settingsBox');
+        var projectButton = document.querySelector('.project-button');
+
+        // Check if the clicked element is not inside the settings box and not the project button
+        if (!settingsBox.contains(event.target) && event.target !== projectButton) {
+            settingsBox.style.display = 'none';
+        }
+    });
+</script>
+
+</body>
+</html>
+
